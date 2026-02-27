@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Click Media & Marketing - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7f1d1d",
+                        "primary-hover": "#991b1b",
+                        "background-dark": "#050507",
+                        "surface-dark": "#0a0a0c",
+                        "text-dark": "#e5e7eb",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #08080a;
+            overflow-x: hidden;
+        }
+        p {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .glass-panel {
+            @apply bg-white/10 backdrop-blur-2xl border border-white/20;
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+        .dropdown-glass {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-glass {
+            @apply bg-black/40 backdrop-blur-[2px] border-b border-white/10;
+        }
+        .nav-scrolled {
+            @apply bg-black/60 backdrop-blur-sm border border-white/20 shadow-2xl;
+        }
+    </style>
+</head>
+
+<body class="text-text-dark selection:bg-primary selection:text-white relative">
+    <!-- Background Gradient overlay -->
+    <div class="fixed inset-0 z-[-2] bg-[radial-gradient(ellipse_at_50%_-20%,#681111_0%,#08080a_80%)]"></div>
+    <!-- Background Grid overlay -->
+    <div
+        class="fixed inset-0 z-[-1] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPHBhdGggZD0iTTAgMEw4IDhaTTAgOEw4IDBaIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjAxNSIvPgo8L3N2Zz4=')] opacity-60">
+    </div>
+
+    <div class="sticky top-0 z-[100] w-full flex justify-center pointer-events-none transition-all duration-1000 ease-in-out"
+        id="nav-container">
+        <nav id="navbar"
+            class="pointer-events-auto w-full nav-glass transition-all duration-[1200ms] ease-in-out rounded-none">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-[1200ms] ease-in-out"
+                    id="nav-inner">
+                    <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                        <a href="index.html">
+                            <img src="images/Small%20White%20Click%20Logo.png" alt="Click Media & Marketing Logo"
+                                class="h-16 w-auto transform group-hover:scale-105 transition-transform duration-500" />
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">HOME</a>
+                        <div class="relative group">
+                            <button
+                                class="flex items-center text-sm font-semibold hover:text-primary transition-colors group-hover:text-primary">
+                                SERVICES
+                                <span class="material-symbols-outlined text-sm ml-1">expand_more</span>
+                            </button>
+                            <div
+                                class="absolute left-0 mt-4 w-48 rounded-2xl shadow-2xl dropdown-glass opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-4 group-hover:translate-y-0 overflow-hidden">
+                                <div class="py-1">
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="web-design.html">Web
+                                        Design</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="print-design.html">Print
+                                        &amp; Design</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10"
+                                        href="photography-video.html">Photography</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="social-media.html">Social
+                                        Media</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="text-sm font-semibold text-primary transition-colors" href="contact.html">CONTACT</a>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a class="bg-primary hover:bg-primary-hover text-white whitespace-nowrap px-6 py-2 md:px-8 md:py-2.5 rounded-full font-bold shadow-[0_0_20px_rgba(127,29,29,0.4)] transform hover:scale-105 transition-all duration-300 text-sm md:text-base"
+                            href="tel:+17162419856">
+                            Call Now!
+                        </a>
+                        <button id="mobile-menu-btn"
+                            class="md:hidden p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/10">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <button id="mobile-menu-close"
+            class="absolute top-8 right-8 p-2 text-gray-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <div class="flex flex-col items-center space-y-8">
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="index.html">HOME</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="web-design.html">WEB DESIGN</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="print-design.html">PRINT & GRAPHIC</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="photography-video.html">PHOTOGRAPHY</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="social-media.html">SOCIAL MEDIA</a>
+            <a class="text-2xl font-bold text-primary transition-colors mobile-link" href="contact.html">CONTACT</a>
+        </div>
+    </div>
+
+    <!-- Contact Header -->
+    <header class="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight">
+                Let's Start a<br />
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-500 to-rose-400 inline-block drop-shadow-lg pb-2">Conversation.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-8 leading-relaxed px-4">
+                We're ready to elevate your brand. Drop us a line, give us a call, or swing by the studio.
+            </p>
+        </div>
+    </header>
+
+    <!-- Contact Content -->
+    <main class="relative z-10 pb-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+
+                <!-- Left Column: Contact Info & Map -->
+                <div class="w-full lg:w-5/12 space-y-8">
+
+                    <!-- Info Card -->
+                    <div class="glass-panel rounded-3xl p-8 relative overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+                        <h2 class="text-sm font-black text-primary uppercase tracking-[0.2em] mb-8">Reach Out Today</h2>
+
+                        <div class="space-y-8">
+                            <!-- Phone -->
+                            <div class="flex items-start space-x-5 group/item">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover/item:border-primary/50 group-hover/item:bg-primary/20 transition-all">
+                                    <span
+                                        class="material-symbols-outlined text-primary group-hover/item:text-white transition-colors">phone_iphone</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold mb-1">Call or Text</h3>
+                                    <a href="tel:+17162419856"
+                                        class="text-gray-400 hover:text-white transition-colors text-lg font-light tracking-wide inline-flex items-center">
+                                        716.241.9856
+                                        <span
+                                            class="material-symbols-outlined text-sm ml-2 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all">arrow_forward</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="flex items-start space-x-5 group/item">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover/item:border-primary/50 group-hover/item:bg-primary/20 transition-all">
+                                    <span
+                                        class="material-symbols-outlined text-primary group-hover/item:text-white transition-colors">location_on</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold mb-1">Click Photo Studios</h3>
+                                    <a href="https://maps.google.com/?q=Click+Media+and+Marketing,+Jamestown,+NY"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="text-gray-400 hover:text-white transition-colors text-lg font-light tracking-wide inline-flex flex-col">
+                                        <span>707 Fairmount Ave., Suite 1</span>
+                                        <span>Jamestown, NY. 14701</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Card -->
+                    <div class="glass-panel rounded-3xl overflow-hidden p-2 group">
+                        <!-- We use an iframe embedded map here, masked by a rounded div -->
+                        <div class="w-full h-64 rounded-2xl overflow-hidden relative">
+                            <!-- A semi-transparent overlay to help the map blend into the dark theme -->
+                            <div
+                                class="absolute inset-0 bg-primary/20 mix-blend-overlay pointer-events-none z-10 transition-opacity duration-500 group-hover:opacity-0">
+                            </div>
+
+                            <!-- Google Maps Embed -->
+                            <iframe
+                                src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Click+Media+and+Marketing,+Jamestown,+NY&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+                                class="w-full h-full border-0 filter grayscale-[80%] contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-700"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Contact Form -->
+                <div class="w-full lg:w-7/12">
+                    <div class="glass-panel rounded-3xl p-8 lg:p-12 relative overflow-hidden group h-full">
+                        <div
+                            class="absolute -top-40 -right-40 w-80 h-80 bg-primary opacity-5 rounded-full blur-3xl group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none">
+                        </div>
+
+                        <h2 class="text-3xl font-extrabold text-white mb-2">How can we assist you?</h2>
+                        <p class="text-gray-400 mb-10 font-light text-lg">Fill out the form below and we'll get back to
+                            you asap!</p>
+
+                        <form class="space-y-6 relative z-10">
+                            <!-- Name & Phone -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Your
+                                        Name</label>
+                                    <input type="text" required
+                                        class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner"
+                                        placeholder="John Doe" />
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Phone
+                                        Number</label>
+                                    <input type="tel" required
+                                        class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner"
+                                        placeholder="(555) 123-4567" />
+                                </div>
+                            </div>
+
+                            <!-- Current Website -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Current
+                                    Website (Optional)</label>
+                                <input type="url"
+                                    class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner"
+                                    placeholder="https://www.yourdomain.com" />
+                            </div>
+
+                            <!-- What are you looking for? -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Tell us
+                                    what you're looking for</label>
+                                <textarea required rows="5"
+                                    class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner resize-none"
+                                    placeholder="I'm interested in a website redesign and a new logo..."></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-4">
+                                <button type="submit"
+                                    class="group relative w-full lg:w-auto overflow-hidden bg-primary hover:bg-primary-hover text-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 shadow-[0_0_20px_rgba(127,29,29,0.3)] hover:shadow-[0_0_40px_rgba(127,29,29,0.6)] hover:-translate-y-1 inline-flex items-center justify-center">
+                                    <span class="relative z-10 text-lg tracking-wide">Send Message</span>
+                                    <span
+                                        class="material-symbols-outlined relative z-10 ml-3 text-lg transform group-hover:translate-x-2 group-hover:rotate-[-10deg] transition-all duration-300">send</span>
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-red-600 to-rose-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black/80 backdrop-blur-2xl py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row justify-between gap-12 xl:gap-20 mb-16">
+                <div class="lg:w-1/4">
+                    <div class="flex items-center mb-6">
+                        <img src="images/Small%20White%20Click%20Logo.png" alt="Click Media & Marketing Logo"
+                            class="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+                    </div>
+                    <p class="text-gray-400 max-w-xs leading-relaxed text-sm">
+                        Jamestown's premier marketing agency specializing in high-end digital and print solutions for
+                        luxury brands.
+                    </p>
+                    <div class="flex mt-8 space-x-4">
+                        <a class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center hover:bg-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">social_leaderboard</span>
+                        </a>
+                        <a class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center hover:bg-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">photo_camera</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+                    <div>
+                        <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Services</h2>
+                        <ul class="text-gray-400 space-y-3 text-sm">
+                            <li><a class="hover:text-white transition-colors" href="web-design.html">Web Design</a></li>
+                            <li><a class="hover:text-white transition-colors" href="print-design.html">Print &amp;
+                                    Graphic</a></li>
+                            <li><a class="hover:text-white transition-colors" href="photography-video.html">Photography</a>
+                            </li>
+                            <li><a class="hover:text-white transition-colors" href="social-media.html">Social Media</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Company</h2>
+                        <ul class="text-gray-400 space-y-3 text-sm">
+                            <li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+                            <li><a class="hover:text-white transition-colors" href="contact.html">Contact</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Portfolio</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1 mt-4 sm:mt-0">
+                        <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Legal</h2>
+                        <ul class="text-gray-400 space-y-3 text-sm">
+                            <li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/3">
+                    <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Get in touch</h2>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500"
+                                placeholder="Name" required type="text" />
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500"
+                                placeholder="Email" required type="email" />
+                        </div>
+                        <div>
+                            <textarea
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500 resize-none"
+                                placeholder="How can we help you?" required rows="3"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(127,29,29,0.2)] hover:shadow-[0_0_30px_rgba(127,29,29,0.4)] text-sm"
+                            type="submit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <span class="text-sm text-gray-500">
+                    © 2026 <a class="hover:text-white transition-colors" href="index.html">Click Media &amp;
+                        Marketing™</a>. All
+                    Rights Reserved.
+                </span>
+                <div class="flex items-center gap-2 text-gray-600 text-[10px] uppercase font-bold tracking-widest">
+                    <span>Designed for Excellence</span>
+                    <span class="w-1 h-1 bg-primary rounded-full"></span>
+                    <span>Est. 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Pill-shaped Navbar on Scroll
+        const navContainer = document.getElementById('nav-container');
+        const navbar = document.getElementById('navbar');
+        const navInner = document.getElementById('nav-inner');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navContainer.classList.add('pt-6', 'px-4');
+                navbar.classList.remove('rounded-none');
+                navbar.classList.add('max-w-7xl', 'rounded-[2.5rem]', 'nav-scrolled');
+                navInner.classList.remove('h-20');
+                navInner.classList.add('h-16');
+            } else {
+                navContainer.classList.remove('pt-6', 'px-4');
+                navbar.classList.add('rounded-none');
+                navbar.classList.remove('max-w-7xl', 'rounded-[2.5rem]', 'nav-scrolled');
+                navInner.classList.add('h-20');
+                navInner.classList.remove('h-16');
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu.classList.contains('opacity-0')) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        }
+
+        if (mobileMenuBtn && mobileMenuClose && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Click Media &amp; Marketing - Agency Services</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7f1d1d",
+                        "primary-hover": "#991b1b",
+                        "background-dark": "#050507",
+                        "surface-dark": "#0a0a0c",
+                        "text-dark": "#e5e7eb",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #08080a;
+            overflow-x: hidden;
+        }
+        p {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .service-card {
+            @apply relative z-10 transition-all duration-500;
+        }
+        .stagger-left {
+            @apply lg:-ml-12 lg:mt-12;
+        }
+        .stagger-right {
+            @apply lg:-mr-12 lg:-mt-12;
+        }
+        .glass-panel {
+            @apply bg-white/10 backdrop-blur-2xl border border-white/20;
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+        .dropdown-glass {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-glass {
+            @apply bg-black/40 backdrop-blur-[2px] border-b border-white/10;
+        }
+        .nav-scrolled {
+            @apply bg-black/60 backdrop-blur-sm border border-white/20 shadow-2xl;
+        }
+        /* Fade overlay & zoom out */
+        .pinned-section {
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .pinned-section {
+                padding: 4rem 0;
+            }
+        }
+        .sticky-content {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            transform-origin: center top;
+            will-change: transform, opacity;
+            /* Disable CSS transitions here so our JavaScript scroll loop doesn't fight it */
+            transition: none !important;
+            /* Hardware acceleration */
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        /* Scroll reveal magic */
+        .reveal {
+            opacity: 0;
+            transform: translateY(80px) scale(0.9) rotateX(-10deg);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotateX(0deg);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-100px) scale(0.9) rotateY(-10deg);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0) scale(1) rotateY(0deg);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(100px) scale(0.9) rotateY(10deg);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0) scale(1) rotateY(0deg);
+        }
+
+    </style>
+</head>
+
+<body class="text-text-dark selection:bg-primary selection:text-white relative">
+    <!-- Background Gradient overlay -->
+    <div class="fixed inset-0 z-[-2] bg-[radial-gradient(ellipse_at_50%_-20%,#681111_0%,#08080a_80%)]"></div>
+    <!-- Background Grid overlay -->
+    <div
+        class="fixed inset-0 z-[-1] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPHBhdGggZD0iTTAgMEw4IDhaTTAgOEw4IDBaIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjAxNSIvPgo8L3N2Zz4=')] opacity-60">
+    </div>
+
+    <div class="sticky top-0 z-[100] w-full flex justify-center pointer-events-none transition-all duration-1000 ease-in-out"
+        id="nav-container">
+        <nav id="navbar"
+            class="pointer-events-auto w-full nav-glass transition-all duration-[1200ms] ease-in-out rounded-none">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-[1200ms] ease-in-out"
+                    id="nav-inner">
+                    <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                        <img src="images/Small%20White%20Click%20Logo.png" alt="Click Media & Marketing Logo"
+                            class="h-16 w-auto transform group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">HOME</a>
+                        <div class="relative group">
+                            <button
+                                class="flex items-center text-sm font-semibold hover:text-primary transition-colors group-hover:text-primary">
+                                SERVICES
+                                <span class="material-symbols-outlined text-sm ml-1">expand_more</span>
+                            </button>
+                            <div
+                                class="absolute left-0 mt-4 w-48 rounded-2xl shadow-2xl dropdown-glass opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-4 group-hover:translate-y-0 overflow-hidden">
+                                <div class="py-1">
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="web-design.html">Web Design</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="print-design.html">Print &amp;
+                                        Design</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="photography-video.html">Photography</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="social-media.html">Social Media</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="text-sm font-semibold text-gray-300 hover:text-primary transition-colors"
+                            href="contact.html">CONTACT</a>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a class="bg-primary hover:bg-primary-hover text-white whitespace-nowrap px-6 py-2 md:px-8 md:py-2.5 rounded-full font-bold shadow-[0_0_20px_rgba(127,29,29,0.4)] transform hover:scale-105 transition-all duration-300 text-sm md:text-base"
+                            href="tel:+17162419856">
+                            Call Now!
+                        </a>
+                        <button id="mobile-menu-btn"
+                            class="md:hidden p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/10">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <button id="mobile-menu-close"
+            class="absolute top-8 right-8 p-2 text-gray-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+        <div class="flex flex-col items-center space-y-8">
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="index.html">HOME</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="web-design.html">WEB DESIGN</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="print-design.html">PRINT & GRAPHIC</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="photography-video.html">PHOTOGRAPHY</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="social-media.html">SOCIAL MEDIA</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link" href="contact.html">CONTACT</a>
+        </div>
+    </div>
+
+    <header class="relative pt-24 pb-12 lg:pt-40 lg:pb-16 overflow-hidden reveal active">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1
+                class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 text-white leading-tight md:leading-normal pb-4 whitespace-nowrap md:whitespace-normal">
+                Before they call you,<br />
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-500 to-rose-400 inline-block drop-shadow-lg pb-2">they
+                    will Google you.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white font-semibold mb-16 leading-relaxed px-4">
+                Your online presence defines the conversation.
+            </p>
+            <div class="relative mt-20 mb-12 w-full max-w-6xl mx-auto flex justify-center drop-shadow-2xl">
+                <img alt="Our Work on Various Screens"
+                    class="w-full max-w-5xl h-auto object-contain transition-transform duration-700 hover:-translate-y-2 hover:scale-[1.02]"
+                    src="images/screens%20a.png" />
+            </div>
+            <p
+                class="max-w-4xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 font-light leading-relaxed px-4">
+                Define your brand with professional web, print, and media services.
+            </p>
+
+        </div>
+    </header>
+    <main class="relative z-10">
+        <div class="w-full">
+            <div class="pinned-section" id="web-wrapper">
+                <section class="sticky-content" id="web">
+                    <div class="reveal-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                            <div class="relative lg:order-1 stagger-left">
+                                <div
+                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
+                                    <img alt="Web Design and Development"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                        src="../images/service-web.jpg" />
+                                </div>
+
+                            </div>
+                            <div class="lg:order-2 lg:pl-12">
+                                <div class="flex items-center space-x-3 mb-6">
+                                    <span class="h-px w-12 bg-primary"></span>
+                                    <span class="text-red-500 font-black uppercase tracking-[0.3em] text-xs">Web Design
+                                        &amp; Development</span>
+                                </div>
+                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Build a
+                                    stunning online presence that converts.</h3>
+                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
+                                    Your website is your digital storefront. We create responsive, mobile-friendly
+                                    websites
+                                    that not only look beautiful but are optimized for speed, SEO, and user experience.
+                                </p>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+                                    <li
+                                        class="flex items-center p-4 glass-panel rounded-2xl hover:bg-white/10 transition-colors">
+                                        <span class="material-symbols-outlined text-primary mr-3">check_circle</span>
+                                        <span class="text-sm font-semibold">Responsive Design</span>
+                                    </li>
+                                    <li
+                                        class="flex items-center p-4 glass-panel rounded-2xl hover:bg-white/10 transition-colors">
+                                        <span class="material-symbols-outlined text-primary mr-3">check_circle</span>
+                                        <span class="text-sm font-semibold">SEO Architecture</span>
+                                    </li>
+                                </ul>
+                                <a class="group inline-flex items-center justify-center px-10 py-4 bg-white text-black font-bold rounded-2xl hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl"
+                                    href="web-design.html">
+                                    Explore Web Design
+                                    <span
+                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="pinned-section" id="print-wrapper">
+                <section class="sticky-content" id="print">
+                    <div class="reveal-right max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="flex flex-col-reverse gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                            <div class="lg:pr-12">
+                                <div class="flex items-center space-x-3 mb-6">
+                                    <span class="h-px w-12 bg-primary"></span>
+                                    <span class="text-red-500 font-black uppercase tracking-[0.3em] text-xs">Print &amp;
+                                        Graphic Design</span>
+                                </div>
+                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Tangible
+                                    branding that leaves a mark.</h3>
+                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
+                                    From business cards to billboards, our print design services ensure your brand
+                                    consistency across all physical mediums. Visuals that communicate your message
+                                    instantly.
+                                </p>
+                                <ul class="space-y-4 mb-12">
+                                    <li class="flex items-start">
+                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
+                                        <span class="text-lg text-gray-300">Brand Identity &amp; Logo Development</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
+                                        <span class="text-lg text-gray-300">High-Impact Marketing Collateral</span>
+                                    </li>
+                                </ul>
+                                <a class="group inline-flex items-center justify-center px-10 py-4 border-2 border-white/20 text-white font-bold rounded-2xl hover:bg-primary hover:border-primary transition-all duration-300"
+                                    href="print-design.html">
+                                    Explore Print Design
+                                    <span
+                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                            <div class="relative stagger-right">
+                                <div
+                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
+                                    <img alt="Graphic Design Samples"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                        src="../images/service-print.jpg" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="pinned-section" id="photo-wrapper">
+                <section class="sticky-content" id="photo">
+                    <div class="reveal-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                            <div class="relative lg:order-1 stagger-left">
+                                <div
+                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
+                                    <img alt="Professional Photography"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                        src="../images/service-photo.jpg" />
+                                </div>
+
+                            </div>
+                            <div class="lg:order-2 lg:pl-12">
+                                <div class="flex items-center space-x-3 mb-6">
+                                    <span class="h-px w-12 bg-primary"></span>
+                                    <span class="text-red-500 font-black uppercase tracking-[0.3em] text-xs">Photography
+                                        &amp; Video</span>
+                                </div>
+                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Visual
+                                    storytelling that captivates.</h3>
+                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
+                                    High-quality imagery is crucial for trust. Professional commercial photography and
+                                    videography services to showcase your business in the best light.
+                                </p>
+                                <ul class="space-y-6 mb-12">
+                                    <li class="flex items-center space-x-4">
+                                        <span
+                                            class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-primary font-bold">01</span>
+                                        <span class="text-lg text-gray-300 font-medium">Commercial &amp; Product
+                                            Photography</span>
+                                    </li>
+                                    <li class="flex items-center space-x-4">
+                                        <span
+                                            class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-primary font-bold">02</span>
+                                        <span class="text-lg text-gray-300 font-medium">Professional Drone
+                                            Videography</span>
+                                    </li>
+                                </ul>
+                                <a class="group inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-primary-hover transition-all duration-300 shadow-[0_0_30px_rgba(127,29,29,0.3)]"
+                                    href="photography-video.html">
+                                    Explore Photo & Video
+                                    <span
+                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="pinned-section" id="social-wrapper">
+                <section class="sticky-content" id="social">
+                    <div class="reveal-right max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div class="flex flex-col-reverse gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                            <div class="lg:pr-12">
+                                <div class="flex items-center space-x-3 mb-6">
+                                    <span class="h-px w-12 bg-primary"></span>
+                                    <span class="text-red-500 font-black uppercase tracking-[0.3em] text-xs">Social
+                                        Media
+                                        Management</span>
+                                </div>
+                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Engage
+                                    your
+                                    audience where they live.</h3>
+                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
+                                    Don't just post—connect. Strategic social media campaigns that increase engagement,
+                                    build community, and drive traffic to your business.
+                                </p>
+                                <div class="grid grid-cols-1 gap-4 mb-12">
+                                    <div class="p-6 glass-panel rounded-3xl hover:border-primary/50 transition-all">
+                                        <div class="flex items-center mb-2">
+                                            <span class="material-symbols-outlined text-primary mr-2">analytics</span>
+                                            <span class="font-bold">Growth Strategy</span>
+                                        </div>
+                                        <p class="text-sm text-gray-400">Data-driven approaches to expand your organic
+                                            reach.</p>
+                                    </div>
+                                </div>
+                                <a class="group inline-flex items-center justify-center px-10 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300"
+                                    href="social-media.html">
+                                    Explore Social Media
+                                    <span
+                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                            <div class="relative stagger-right">
+                                <div
+                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
+                                    <img alt="Social Media Strategy"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                                        src="../images/service-social.jpg" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-black/80 backdrop-blur-2xl py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row justify-between gap-12 xl:gap-20 mb-16">
+                <div class="lg:w-1/4">
+                    <div class="flex items-center mb-6">
+                        <img src="images/Small%20White%20Click%20Logo.png" alt="Click Media & Marketing Logo"
+                            class="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+                    </div>
+                    <p class="text-gray-400 max-w-xs leading-relaxed text-sm">
+                        Jamestown's premier marketing agency specializing in high-end digital and print solutions for
+                        luxury brands.
+                    </p>
+                    <div class="flex mt-8 space-x-4">
+                        <a class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center hover:bg-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">social_leaderboard</span>
+                        </a>
+                        <a class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center hover:bg-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined text-sm">photo_camera</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+                    <div>
+                        <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Services</h2>
+                        <ul class="text-gray-400 space-y-3 text-sm">
+                            <li><a class="hover:text-white transition-colors" href="web-design.html">Web Design</a></li>
+                            <li><a class="hover:text-white transition-colors" href="print-design.html">Print &amp; Graphic</a></li>
+                            <li><a class="hover:text-white transition-colors" href="photography-video.html">Photography</a></li>
+                            <li><a class="hover:text-white transition-colors" href="social-media.html">Social Media</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Company</h2>
+                        <ul class="text-gray-400 space-y-3 text-sm">
+                            <li><a class="hover:text-white transition-colors" href="#">About Us</a></li>
+                            <li><a class="hover:text-white transition-colors" href="contact.html">Contact</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Portfolio</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1 mt-4 sm:mt-0">
+                        <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Legal</h2>
+                        <ul class="text-gray-400 space-y-3 text-sm">
+                            <li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+                            <li><a class="hover:text-white transition-colors" href="#">Terms &amp; Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/3">
+                    <h2 class="mb-6 text-xs font-black text-red-500 uppercase tracking-[0.2em]">Get in touch</h2>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500"
+                                placeholder="Name" required type="text" />
+                            <input
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500"
+                                placeholder="Email" required type="email" />
+                        </div>
+                        <div>
+                            <textarea
+                                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder-gray-500 resize-none"
+                                placeholder="How can we help you?" required rows="3"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(127,29,29,0.2)] hover:shadow-[0_0_30px_rgba(127,29,29,0.4)] text-sm"
+                            type="submit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <span class="text-sm text-gray-500">
+                    © 2026 <a class="hover:text-white transition-colors" href="#">Click Media &amp; Marketing™</a>. All
+                    Rights Reserved.
+                </span>
+                <div class="flex items-center gap-2 text-gray-600 text-[10px] uppercase font-bold tracking-widest">
+                    <span>Designed for Excellence</span>
+                    <span class="w-1 h-1 bg-primary rounded-full"></span>
+                    <span>Est. 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Pill-shaped Navbar on Scroll
+        const navContainer = document.getElementById('nav-container');
+        const navbar = document.getElementById('navbar');
+        const navInner = document.getElementById('nav-inner');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navContainer.classList.add('pt-6', 'px-4');
+                navbar.classList.remove('rounded-none');
+                navbar.classList.add('max-w-7xl', 'rounded-[2.5rem]', 'nav-scrolled');
+                navInner.classList.remove('h-20');
+                navInner.classList.add('h-16');
+            } else {
+                navContainer.classList.remove('pt-6', 'px-4');
+                navbar.classList.add('rounded-none');
+                navbar.classList.remove('max-w-7xl', 'rounded-[2.5rem]', 'nav-scrolled');
+                navInner.classList.add('h-20');
+                navInner.classList.remove('h-16');
+            }
+        });
+
+        // Intersection Observer for Magic Reveals
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Scroll Fade and Blur Logic
+        const pinnedSections = document.querySelectorAll('.pinned-section');
+
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    pinnedSections.forEach((wrapper, index) => {
+                        const content = wrapper.querySelector('.sticky-content');
+                        const rect = wrapper.getBoundingClientRect();
+
+                        // Skip the effect for the very last section (Social Media) or mobile screens
+                        if (index === pinnedSections.length - 1 || window.innerWidth < 1024) {
+                            content.style.transform = `none`;
+                            content.style.opacity = 1;
+                            content.style.filter = `none`;
+                            return;
+                        }
+
+                        // Wait until the top of the section reaches just above the center of the screen
+                        let progress = 0;
+                        let freezeY = 0;
+
+                        // Trigger when the top of the content reaches 15% from the top of the viewport
+                        const triggerPoint = window.innerHeight * 0.15;
+
+                        if (rect.top < triggerPoint) {
+                            const overScroll = triggerPoint - rect.top;
+                            progress = overScroll / (window.innerHeight * 0.5);
+                            freezeY = overScroll; // This perfectly counteracts the page scroll
+                        }
+
+                        progress = Math.max(0, Math.min(1, progress));
+
+                        // Gently fade opacity out and shrink slightly as the next section pushes up.
+                        // To freeze it in place, we translate it downwards exactly as much as it scrolled upwards.
+                        const opacity = 1 - progress;
+                        const scale = 1 - (progress * 0.3); // Shrink by 30% as it fades out
+
+                        // Use translate3d for hardware acceleration to prevent jitter
+                        content.style.transform = `translate3d(0, ${freezeY}px, 0) scale(${scale})`;
+                        content.style.opacity = Math.max(0, opacity);
+                        content.style.filter = `none`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileMenu() {
+            if (mobileMenu.classList.contains('opacity-0')) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        }
+
+        if (mobileMenuBtn && mobileMenuClose && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+        }
+    </script>
+</body>
+
+</html>
