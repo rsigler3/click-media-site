@@ -63,6 +63,18 @@
         .nav-scrolled {
             @apply bg-black/60 backdrop-blur-sm border border-white/20 shadow-2xl;
         }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll-left 50s linear infinite;
+            display: flex;
+            width: max-content;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
@@ -109,7 +121,8 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="text-sm font-semibold text-gray-300 hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+                        <a class="text-sm font-semibold text-gray-300 hover:text-primary transition-colors"
+                            href="contact.html">CONTACT</a>
                     </div>
                     <div class="flex items-center space-x-4">
                         <a class="bg-primary hover:bg-primary-hover text-white whitespace-nowrap px-6 py-2 md:px-8 md:py-2.5 rounded-full font-bold shadow-[0_0_20px_rgba(127,29,29,0.4)] transform hover:scale-105 transition-all duration-300 text-sm md:text-base"
@@ -145,7 +158,8 @@
                 href="photography-video.html">PHOTOGRAPHY</a>
             <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
                 href="social-media.html">SOCIAL MEDIA</a>
-            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link" href="contact.html">CONTACT</a>
+            <a class="text-2xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                href="contact.html">CONTACT</a>
         </div>
     </div>
 
@@ -153,7 +167,9 @@
     <header class="relative pt-24 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight">
-                Tangible Branding that<br><span class='text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-500 to-rose-400 inline-block drop-shadow-lg pb-2'>Leaves a Mark.</span>
+                Tangible Branding that<br><span
+                    class='text-transparent bg-clip-text bg-gradient-to-r from-primary via-red-500 to-rose-400 inline-block drop-shadow-lg pb-2'>Leaves
+                    a Mark.</span>
             </h1>
             <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-8 leading-relaxed px-4">
                 High-impact graphic design printing for billboards, yard signs, brochures, vehicle graphics, and beyond.
@@ -164,48 +180,187 @@
     <!-- Contact Content -->
     <main class="relative z-10 pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-<div class="flex flex-col lg:flex-row gap-12 items-start">
-    <div class="w-full lg:w-5/12 space-y-8">
-        <div class="glass-panel rounded-3xl p-8 relative overflow-hidden group">
-            <h2 class="text-3xl font-extrabold text-white mb-6">Products We Design & Print</h2>
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Yard signs</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Banners</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Window graphics</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Vehicle graphics</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Menus & Rack cards</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Folders & Reports</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Event signage</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Trade show displays</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Stickers & Labels</span></li>
-                <li class="flex items-center"><span class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Notepads & Letterhead</span></li>
-            </ul>
-        </div>
-        <div class="rounded-3xl overflow-hidden glass-panel">
-            <img src="../images/service-print.jpg" alt="Print Design" class="w-full h-full object-cover">
-        </div>
-    </div>
-    <div class="w-full lg:w-7/12">
-        <div class="glass-panel rounded-3xl p-8 lg:p-12 relative overflow-hidden group h-full">
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary opacity-5 rounded-full blur-3xl pointer-events-none"></div>
-            <h2 class="text-3xl font-extrabold text-white mb-6">Print Design That People Actually Notice</h2>
-            <p class="text-gray-400 mb-6 font-light text-lg leading-relaxed">
-                Print design is still one of the most effective ways to get your message in front of real people—and when it's done right, it leaves a lasting impression. I design print materials that are bold, clear, and intentional, created to grab attention and communicate quickly.
-            </p>
-            <p class="text-gray-400 mb-10 font-light text-lg leading-relaxed">
-                From large-scale billboards seen by thousands every day, to posters, signs, brochures, postcards, tickets, and everything in between, every piece is thoughtfully designed for how it will be seen, read, and used. Whether someone has three seconds driving past your message or ten minutes holding it in their hands, the goal is always the same: make it memorable, professional, and unmistakably you.
-            </p>
-            <div class="pt-4 border-t border-white/10">
-                <a href="contact.html" class="inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-primary-hover transition-all text-lg shadow-[0_0_20px_rgba(127,29,29,0.3)] hover:shadow-[0_0_40px_rgba(127,29,29,0.6)]">
-                    Let's Talk Print <span class="material-symbols-outlined ml-3">arrow_forward</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 
-        </div>
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+                <div class="w-full lg:w-5/12 space-y-8">
+                    <div class="glass-panel rounded-3xl p-8 relative overflow-hidden group">
+                        <h2 class="text-3xl font-extrabold text-white mb-6">Products We Design & Print</h2>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span class="text-gray-300">Yard
+                                    signs</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Banners</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Window graphics</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Vehicle graphics</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Menus & Rack cards</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Folders & Reports</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Event signage</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Trade show displays</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Stickers & Labels</span></li>
+                            <li class="flex items-center"><span
+                                    class="w-2 h-2 bg-primary rounded-full mr-3"></span><span
+                                    class="text-gray-300">Notepads & Letterhead</span></li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden glass-panel">
+                        <img src="../images/service-print.jpg" alt="Print Design" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full lg:w-7/12">
+                    <div class="glass-panel rounded-3xl p-8 lg:p-12 relative overflow-hidden group h-full">
+                        <div
+                            class="absolute -top-40 -right-40 w-80 h-80 bg-primary opacity-5 rounded-full blur-3xl pointer-events-none">
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-white mb-6">Print Design That People Actually Notice
+                        </h2>
+                        <p class="text-gray-400 mb-6 font-light text-lg leading-relaxed">
+                            Print design is still one of the most effective ways to get your message in front of real
+                            people—and when it's done right, it leaves a lasting impression. I design print materials
+                            that are bold, clear, and intentional, created to grab attention and communicate quickly.
+                        </p>
+                        <p class="text-gray-400 mb-10 font-light text-lg leading-relaxed">
+                            From large-scale billboards seen by thousands every day, to posters, signs, brochures,
+                            postcards, tickets, and everything in between, every piece is thoughtfully designed for how
+                            it will be seen, read, and used. Whether someone has three seconds driving past your message
+                            or ten minutes holding it in their hands, the goal is always the same: make it memorable,
+                            professional, and unmistakably you.
+                        </p>
+                        <div class="pt-4 border-t border-white/10">
+                            <a href="contact.html"
+                                class="inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-primary-hover transition-all text-lg shadow-[0_0_20px_rgba(127,29,29,0.3)] hover:shadow-[0_0_40px_rgba(127,29,29,0.6)]">
+                                Let's Talk Print <span class="material-symbols-outlined ml-3">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Print Portfolio Slider -->
+            <div class="mt-24 lg:mt-32 w-full overflow-hidden relative pb-12">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Print Media Portfolio</h2>
+                    <p class="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto px-4">Explore some of our
+                        recent print and graphic design work.</p>
+                </div>
+                <!-- Break out of container to span full width of screen -->
+                <div class="relative w-[100vw] ml-[calc(-50vw+50%)] overflow-hidden"
+                    style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+                    <div class="animate-scroll gap-6 px-3">
+                        <!-- Original Set -->
+                        <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                            <img src="images/printmedia/Billboard%20Mockup_1.jpg"
+                                class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                alt="Billboard Design">
+                        </div>
+                        <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                            <img src="images/printmedia/02.%20Sign%20Board%20Mockup.jpg"
+                                class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                alt="Sign Board Design">
+                        </div>
+                        <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                            <img src="images/printmedia/A4%20Magazine%20PSD%2001.jpg"
+                                class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                alt="Magazine Design">
+                        </div>
+                        <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                            <img src="images/printmedia/Psd%201.jpg"
+                                class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                alt="Poster Design">
+                        </div>
+                        <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                            <img src="images/printmedia/mags.jpg"
+                                class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                alt="Magazine Design">
+                        </div>
+
+                        <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                            <img src="images/printmedia/poaster%20.jpg"
+                                class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                alt="Poster Design">
+
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/3aa.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Graphic Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/View%204.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Graphic Design">
+                            </div>
+
+                            <!-- Duplicate Set for Infinite Scroll -->
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/Billboard%20Mockup_1.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Billboard Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/02.%20Sign%20Board%20Mockup.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Sign Board Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/A4%20Magazine%20PSD%2001.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Magazine Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/Psd%201.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Poster Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/mags.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Magazine Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/outdoor-advertising-mockup-vol-3-7.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Outdoor Advertising">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/poaster%20.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Poster Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/bee.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Graphic Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/3aa.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Graphic Design">
+                            </div>
+                            <div class="w-72 sm:w-80 h-96 flex-shrink-0">
+                                <img src="images/printmedia/View%204.jpg"
+                                    class="w-full h-full object-cover rounded-2xl glass-panel p-2 hover:-translate-y-2 transition-transform duration-500"
+                                    alt="Graphic Design">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
     </main>
 
     <footer class="bg-black/80 backdrop-blur-2xl py-20 border-t border-white/5">
@@ -239,7 +394,8 @@
                             <li><a class="hover:text-white transition-colors" href="web-design.html">Web Design</a></li>
                             <li><a class="hover:text-white transition-colors" href="print-design.html">Print &amp;
                                     Graphic</a></li>
-                            <li><a class="hover:text-white transition-colors" href="photography-video.html">Photography</a>
+                            <li><a class="hover:text-white transition-colors"
+                                    href="photography-video.html">Photography</a>
                             </li>
                             <li><a class="hover:text-white transition-colors" href="social-media.html">Social Media</a>
                             </li>
