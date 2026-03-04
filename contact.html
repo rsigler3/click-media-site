@@ -248,20 +248,25 @@
                         <p class="text-gray-400 mb-10 font-light text-lg">Fill out the form below and we'll get back to
                             you asap!</p>
 
-                        <form class="space-y-6 relative z-10">
+                        <form action="https://formsubmit.co/rob@clickmediaandmarketing.com" method="POST"
+                            class="space-y-6 relative z-10">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="New Contact Request from Click Media Website!">
+                            <input type="hidden" name="_template" value="table">
+
                             <!-- Name & Phone -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="space-y-2">
                                     <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Your
                                         Name</label>
-                                    <input type="text" required
+                                    <input type="text" name="name" required
                                         class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner"
                                         placeholder="John Doe" />
                                 </div>
                                 <div class="space-y-2">
                                     <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Phone
                                         Number</label>
-                                    <input type="tel" required
+                                    <input type="tel" name="phone" required
                                         class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner"
                                         placeholder="(555) 123-4567" />
                                 </div>
@@ -271,7 +276,7 @@
                             <div class="space-y-2">
                                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Current
                                     Website (Optional)</label>
-                                <input type="url"
+                                <input type="url" name="website"
                                     class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner"
                                     placeholder="https://www.yourdomain.com" />
                             </div>
@@ -280,7 +285,7 @@
                             <div class="space-y-2">
                                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest pl-1">Tell us
                                     what you're looking for</label>
-                                <textarea required rows="5"
+                                <textarea name="message" required rows="5"
                                     class="w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-primary/50 focus:bg-white/5 focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 shadow-inner resize-none"
                                     placeholder="I'm interested in a website redesign and a new logo..."></textarea>
                             </div>
@@ -336,8 +341,8 @@
                             <li><a class="hover:text-white transition-colors" href="web-design.html">Web Design</a></li>
                             <li><a class="hover:text-white transition-colors" href="print-design.html">Print &amp;
                                     Graphic</a></li>
-                            <li><a class="hover:text-white transition-colors"
-                                    href="photography-video.html">Photo &amp; Vid</a>
+                            <li><a class="hover:text-white transition-colors" href="photography-video.html">Photo &amp;
+                                    Vid</a>
                             </li>
                             <li><a class="hover:text-white transition-colors" href="social-media.html">Social Media</a>
                             </li>
