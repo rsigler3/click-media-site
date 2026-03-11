@@ -57,11 +57,9 @@
         .checklist-item {
             background-color: rgba(255, 255, 255, 0.05);
             border-left: 4px solid #7f1d1d;
-            padding: 1rem 1.25rem;
-            margin-bottom: 0.75rem;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.25rem;
             border-radius: 0 0.5rem 0.5rem 0;
-            break-inside: avoid;
-            page-break-inside: avoid;
         }
         
         .check-icon {
@@ -70,19 +68,26 @@
             display: inline-block;
             margin-right: 0.5rem;
         }
+
+        .page-break {
+            page-break-before: always;
+            break-before: page;
+        }
     </style>
 </head>
 <body>
+    <!-- PAGE 1 -->
     <div class="page-container">
         <!-- Background decorative elements -->
         <div class="decorative-circle" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
-        <div class="decorative-circle" style="width: 300px; height: 300px; bottom: -50px; left: -100px;"></div>
+        <div class="decorative-circle" style="width: 300px; height: 300px; bottom: 50px; left: -100px;"></div>
         
         <div class="content">
             <!-- Header -->
             <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-800">
-                <div class="font-bold text-2xl tracking-widest text-white flex items-center">
-                    <span style="color: #ef4444; margin-right: 8px;">CLICK</span> MEDIA
+                <div class="flex items-center">
+                    <!-- Absolute path to logo for the local playwright execution -->
+                    <img src="images/logo.webp" alt="Click Media Logo" class="h-10 w-auto" onerror="this.src='/Volumes/Speedy Disk/click-media-site/images/logo.webp'"/>
                 </div>
                 <div class="text-right text-gray-400 text-sm">
                     <p>contact@clickmediaandmarketing.com</p>
@@ -102,87 +107,135 @@
                 </p>
             </div>
 
-            <!-- Two Column Layout for the checklist to fit cleanly -->
-            <div class="grid grid-cols-2 gap-6">
+            <!-- Single Column Layout for deeper content -->
+            <div class="space-y-4">
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">1. Google Business Profile Audit</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Is your profile claimed and verified?</li>
+                        <li><span class="check-icon">✓</span> Do you have at least 10 high-quality photos uploaded?</li>
+                        <li><span class="check-icon">✓</span> Are you responding to every review (even the bad ones)?</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Your Google Business Profile is often the very first thing potential customers see when they search for your services. An incomplete profile signals to Google that you might not be an active business, dropping you in Map Pack rankings.
+                    </p>
+                </div>
                 
-                <!-- Column 1 -->
-                <div>
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">1. Google Business Profile Audit</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Is your profile claimed and verified?</li>
-                            <li><span class="check-icon">✓</span> Do you have at least 10 high-quality photos uploaded?</li>
-                            <li><span class="check-icon">✓</span> Are you responding to every review (even the bad ones)?</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">2. The "Mobile-First" Test</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Does your site load in under 3 seconds on a 4G connection?</li>
-                            <li><span class="check-icon">✓</span> Are buttons large enough to tap with a thumb?</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">3. The H1 Header Check</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Does your main headline include your primary service + your city? (e.g., "Plumber in Jamestown, NY")</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">4. NAP Consistency</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Is your Name, Address, and Phone identical on your website, Facebook, and Google Maps? (Even "St." vs "Street" matters!)</li>
-                        </ul>
-                    </div>
-
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">5. Meta Title & Description</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Do your search results actually "sell" the click, or are they just the name of the page?</li>
-                        </ul>
-                    </div>
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">2. The "Mobile-First" Test</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Does your site load in under 3 seconds on a 4G connection?</li>
+                        <li><span class="check-icon">✓</span> Are buttons large enough to tap with a thumb?</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Google actively penalizes websites that are slow or difficult to use on smartphones. Over 60% of local searches happen on mobile devices—if your site isn't optimized for them, you're losing more than half your potential customers.
+                    </p>
+                </div>
+                
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">3. The H1 Header Check</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Does your main headline include your primary service + your city? (e.g., "Plumber in Jamestown, NY")</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> The H1 tag is the most important piece of text on your page. If your main headline just says "Welcome to our website," Google has no idea what you do or where you are located. Be explicit.
+                    </p>
                 </div>
 
-                <!-- Column 2 -->
-                <div>
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">6. Image Optimization</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Are your images huge files slowing down the site?</li>
-                            <li><span class="check-icon">✓</span> Do they have descriptive "Alt Text" for Google's bots?</li>
-                        </ul>
-                    </div>
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">4. NAP Consistency</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Is your Name, Address, and Phone identical on your website, Facebook, and Google Maps? (Even "St." vs "Street" matters!)</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Search engines use NAP (Name, Address, Phone) data to verify your business's legitimacy. Inconsistent information confuses the algorithm and hurts your local search rankings.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-6 text-gray-600 text-xs">
+                Page 1 of 2
+            </div>
+        </div>
+    </div>
 
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">7. Content Depth</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Do your service pages have at least 500 words of helpful, expert information?</li>
-                        </ul>
-                    </div>
+    <!-- PAGE 2 -->
+    <div class="page-container page-break">
+        <!-- Background decorative elements -->
+        <div class="decorative-circle" style="width: 300px; height: 300px; top: -50px; left: -100px;"></div>
+        <div class="decorative-circle" style="width: 400px; height: 400px; bottom: -100px; right: -100px;"></div>
+        
+        <div class="content">
+            <!-- Header for page 2 -->
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-800">
+                <div class="flex items-center">
+                    <img src="images/logo.webp" alt="Click Media Logo" class="h-10 w-auto" onerror="this.src='/Volumes/Speedy Disk/click-media-site/images/logo.webp'"/>
+                </div>
+                <div class="text-right text-gray-400 text-sm">
+                    <p>The 10-Point SEO Checklist</p>
+                </div>
+            </div>
 
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">8. Internal Linking</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Do your pages link to each other, or are they "islands" that Google can't navigate?</li>
-                        </ul>
-                    </div>
+            <div class="space-y-4">
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">5. Meta Title & Description</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Do your search results actually "sell" the click, or are they just the name of the page?</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Even if you rank #1, nobody will click your link if the description doesn't offer a compelling reason. Think of your meta title and description as a mini-billboard on the search results page.
+                    </p>
+                </div>
+            
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">6. Image Optimization</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Are your images huge files slowing down the site?</li>
+                        <li><span class="check-icon">✓</span> Do they have descriptive "Alt Text" for Google's bots?</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Large images are the #1 cause of slow websites. Compressing them speeds up your site, and adding "Alt Text" (hidden descriptions) tells Google exactly what the image is about, helping you rank in Image Search.
+                    </p>
+                </div>
 
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">9. SSL Security</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Does your URL start with HTTPS? (Google will flag "Not Secure" sites and scare away customers).</li>
-                        </ul>
-                    </div>
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">7. Content Depth</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Do your service pages have at least 500 words of helpful, expert information?</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Thin content pages tell Google that you aren't an authority in your field. To rank well, you need comprehensive, well-written content that thoroughly answers the questions your potential customers are asking.
+                    </p>
+                </div>
 
-                    <div class="checklist-item">
-                        <h3 class="text-white font-bold text-lg mb-2">10. The Call to Action</h3>
-                        <ul class="text-gray-400 text-sm space-y-1">
-                            <li><span class="check-icon">✓</span> Is there a clear, bold button on every page telling the user exactly what to do next?</li>
-                        </ul>
-                    </div>
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">8. Internal Linking</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Do your pages link to each other, or are they "islands" that Google can't navigate?</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Internal links help Google's crawlers understand the structure of your website and establish a hierarchy of importance. They also keep visitors on your site longer, which is a positive ranking signal.
+                    </p>
+                </div>
+
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">9. SSL Security</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Does your URL start with HTTPS? (Google will flag "Not Secure" sites and scare away customers).</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> Security is a top priority for Google. If your site doesn't have an SSL certificate, browsers will literally display a warning to users that your site is unsafe, instantly killing trust and conversions.
+                    </p>
+                </div>
+
+                <div class="checklist-item">
+                    <h3 class="text-white font-bold text-xl mb-3">10. The Call to Action</h3>
+                    <ul class="text-gray-300 text-base space-y-2 mb-3">
+                        <li><span class="check-icon">✓</span> Is there a clear, bold button on every page telling the user exactly what to do next?</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm italic border-t border-white/10 pt-3 mt-3">
+                        <span class="text-red-400 not-italic font-semibold">Why it matters:</span> SEO brings people to your door, but your website's job is to invite them inside. Without clear next steps (like "Get a Quote" or "Call Now"), visitors will leave without taking action.
+                    </p>
                 </div>
             </div>
 
@@ -192,9 +245,13 @@
                 <p class="text-gray-400 mb-4 text-sm max-w-xl mx-auto">
                     Stop letting competitors steal your traffic. Contact Click Media & Marketing today for a comprehensive, customized SEO strategy that puts your business at the top.
                 </p>
-                <div class="inline-block bg-red-700 text-white font-bold py-2 px-6 rounded-lg text-sm">
+                <div class="inline-block bg-primary text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-red-800 transition-colors">
                     Visit www.clickmediaandmarketing.com
                 </div>
+            </div>
+            
+            <div class="text-center mt-6 text-gray-600 text-xs">
+                Page 2 of 2
             </div>
         </div>
     </div>
