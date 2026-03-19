@@ -651,6 +651,29 @@
                 </section>
             </div>
         </div>
+
+        <!-- Latest Education Articles Section -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 mb-16 relative z-10 w-full">
+            <div class="text-center mb-10 w-full">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Hot Topics in Small Business</h2>
+                <p class="text-gray-400 font-light text-lg mb-6">Tips, guides, and strategies to grow your business.</p>
+                <a href="education.html" class="inline-flex items-center text-primary font-bold hover:text-white transition-colors group">
+                    View All Articles <span class="material-symbols-outlined ml-2 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                </a>
+            </div>
+            
+            <div class="relative w-full overflow-hidden">
+                <!-- Left/Right Fading Edges for the Scroll Container -->
+                <div class="absolute inset-y-0 left-0 w-8 md:w-16 bg-gradient-to-r from-[#08080a] to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute inset-y-0 right-0 w-8 md:w-16 bg-gradient-to-l from-[#08080a] to-transparent z-10 pointer-events-none"></div>
+
+                <!-- Carousel Container -->
+                <div id="latest-blog-container" class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+                    <style>#latest-blog-container::-webkit-scrollbar { display: none; }</style>
+                    <!-- Articles injected here via JS -->
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="bg-black/80 backdrop-blur-2xl py-20 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -860,6 +883,71 @@
                 link.addEventListener('click', toggleMobileMenu);
             });
         }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://pnuczigdeuxyextjlpva.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBudWN6aWdkZXV4eWV4dGpscHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MjU3NzksImV4cCI6MjA4OTUwMTc3OX0.JQ_r72q2v0J4JeWuhUN4W6ccadFdiOlvhcQzPeAx0L4';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function fetchLatestBlogs() {
+            const container = document.getElementById('latest-blog-container');
+            if(!container) return;
+            
+            // Fetch all articles
+            const { data: articles, error } = await supabaseClient
+                .from('articles')
+                .select('title, slug, seo_description, published_date, content')
+                .eq('status', 'published')
+                .order('published_date', { ascending: false });
+
+            if(error) {
+                container.innerHTML = `<p class="text-red-500 col-span-full w-full text-center">Failed to load articles.</p>`;
+                return;
+            }
+
+            if(articles.length === 0) {
+                container.innerHTML = `<p class="text-gray-400 col-span-full w-full text-center">No articles published yet. Check back soon!</p>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            articles.forEach(art => {
+                const date = new Date(art.published_date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
+                const card = document.createElement('a');
+                card.href = `article.html?slug=${art.slug}`;
+                card.className = "glass-panel p-6 rounded-3xl flex flex-col justify-between hover:bg-white/20 transition-all group block shadow-2xl shrink-0 snap-center min-w-[280px] w-[85vw] md:w-[320px] lg:w-[320px]";
+                
+                let imgHtml = '';
+                if (art.content) {
+                    const match = art.content.match(/<img[^>]+src="([^">]+)"/i);
+                    if (match && match[1]) {
+                        imgHtml = `
+                            <div class="w-full h-32 mb-4 rounded-xl overflow-hidden bg-black/50 flex-shrink-0">
+                                <img src="${match[1]}" alt="Preview for ${art.title.replace(/"/g, '&quot;')}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                            </div>
+                        `;
+                    }
+                }
+
+                card.innerHTML = `
+                    <div class="flex flex-col flex-grow">
+                        ${imgHtml}
+                        <div class="flex items-center gap-2 text-[10px] text-primary font-bold tracking-widest uppercase mb-3">
+                            <span>Blog</span> &bull; <span>${date}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight">${art.title}</h3>
+                        <p class="text-xs text-gray-400 line-clamp-3 mb-4 font-light">${art.seo_description || 'Read more about this topic.'}</p>
+                    </div>
+                    <div class="flex items-center text-xs font-semibold text-white group-hover:text-primary transition-colors mt-auto">
+                        Read Article <span class="material-symbols-outlined ml-1 text-sm transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+        
+        fetchLatestBlogs();
     </script>
 </body>
 
