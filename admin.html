@@ -82,8 +82,8 @@
             <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
                 <h2 class="text-2xl font-bold text-white" id="editor-title">Edit Article</h2>
                 <div class="flex gap-3">
-                    <button id="btn-cancel" class="px-5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 transition">Cancel</button>
-                    <button id="btn-save" class="px-5 py-2 rounded-xl bg-primary hover:bg-primary-hover font-bold transition flex items-center gap-2">
+                    <button id="btn-cancel" type="button" class="px-5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 transition">Cancel</button>
+                    <button id="btn-save" type="button" class="px-5 py-2 rounded-xl bg-primary hover:bg-primary-hover font-bold transition flex items-center gap-2">
                         <span class="material-symbols-outlined text-sm">save</span> <span id="save-text">Save Draft</span>
                     </button>
                 </div>
@@ -107,6 +107,7 @@
                         <select id="a-status" class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary">
                             <option value="draft">Draft (Hidden)</option>
                             <option value="published">Published (Live)</option>
+                            <option value="delete" id="opt-delete" class="text-red-500 font-bold" style="display: none;" disabled>Delete Article...</option>
                         </select>
                     </div>
                     <div>
@@ -306,6 +307,9 @@
         faqs = [];
         renderFaqs();
         document.getElementById('save-text').textContent = 'Create Article';
+        const optDelete = document.getElementById('opt-delete');
+        optDelete.style.display = 'none';
+        optDelete.disabled = true;
     };
 
     document.getElementById('btn-cancel').onclick = () => {
@@ -324,6 +328,10 @@
         document.getElementById('editor-title').textContent = 'Edit Article';
         document.getElementById('save-text').textContent = 'Update Status';
         document.getElementById('article-id').value = data.id;
+        
+        const optDelete = document.getElementById('opt-delete');
+        optDelete.style.display = 'block';
+        optDelete.disabled = false;
         document.getElementById('a-title').value = data.title || '';
         document.getElementById('a-slug').value = data.slug || '';
         document.getElementById('a-status').value = data.status || 'draft';
@@ -340,6 +348,25 @@
     document.getElementById('btn-save').onclick = async (e) => {
         e.preventDefault();
         
+        const artId = document.getElementById('article-id').value;
+        const statusVal = document.getElementById('a-status').value;
+
+        // Handle deletion if selected
+        if (statusVal === 'delete') {
+            if (!artId) return;
+            if (confirm("Are you sure you want to delete this article? This action cannot be undone.")) {
+                const { error } = await supabaseClient.from('articles').delete().eq('id', artId);
+                if (error) {
+                    alert("Delete Error: " + error.message);
+                } else {
+                    loadArticles();
+                    editorContainer.style.display = 'none';
+                    welcomeContainer.style.display = 'flex';
+                }
+            }
+            return;
+        }
+        
         // gather faqs
         const currFaqs = [];
         const qs = document.querySelectorAll('.faq-q');
@@ -350,11 +377,10 @@
             }
         });
 
-        const artId = document.getElementById('article-id').value;
         const payload = {
             title: document.getElementById('a-title').value,
             slug: document.getElementById('a-slug').value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''),
-            status: document.getElementById('a-status').value,
+            status: statusVal,
             author: document.getElementById('a-author').value,
             seo_title: document.getElementById('a-seo-title').value,
             seo_description: document.getElementById('a-seo-desc').value,
