@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title id="page-title">Loading Article... | Click Media & Marketing</title>
+    <meta name="description" id="page-desc" content="Article" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7f1d1d",
+                        "primary-hover": "#991b1b",
+                        "background-dark": "#050507",
+                        "surface-dark": "#0a0a0c",
+                        "text-dark": "#e5e7eb",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style type="text/tailwindcss">
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #08080a; overflow-x: hidden; }
+        p { font-family: 'Poppins', sans-serif; }
+        .glass-panel { @apply bg-white/10 backdrop-blur-2xl border border-white/20; box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 40px -10px rgba(0, 0, 0, 0.5); }
+        .nav-glass { @apply bg-black/40 backdrop-blur-[2px] border-b border-white/10; }
+        .nav-scrolled { @apply bg-black/60 backdrop-blur-sm border border-white/20 shadow-2xl; }
+        /* Rich Text styling */
+        .prose-dark { color: #e5e7eb; }
+        .prose-dark h1, .prose-dark h2, .prose-dark h3 { color: #ffffff; font-weight: 800; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose-dark p { margin-bottom: 1.5rem; line-height: 1.8; color: #9ca3af; }
+        .prose-dark a { color: #7f1d1d; text-decoration: underline; font-weight: 600; }
+        .prose-dark a:hover { color: #991b1b; }
+        .prose-dark ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #9ca3af; }
+        .prose-dark ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #9ca3af; }
+        .prose-dark img { border-radius: 0.5rem; max-width: 100%; height: auto; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .prose-dark blockquote { border-left: 4px solid #7f1d1d; padding-left: 1rem; font-style: italic; color: #d1d5db; margin-bottom: 1.5rem; background: rgba(255,255,255,0.02); padding-top: 1rem; padding-bottom: 1rem; }
+    </style>
+</head>
+
+<body class="text-text-dark selection:bg-primary selection:text-white relative">
+    <div class="fixed inset-0 z-[-2] bg-[radial-gradient(ellipse_at_50%_-20%,#681111_0%,#08080a_80%)]"></div>
+    <div class="fixed inset-0 z-[-1] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPHBhdGggZD0iTTAgMEw4IDhaTTAgOEw4IDBaIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjAxNSIvPgo8L3N2Zz4=')] opacity-60"></div>
+
+    <div class="sticky top-0 z-[100] w-full flex justify-center pointer-events-none transition-all duration-1000 ease-in-out" id="nav-container">
+        <nav id="navbar" class="pointer-events-auto w-full nav-glass transition-all duration-[1200ms] ease-in-out rounded-none">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-[1200ms] ease-in-out" id="nav-inner">
+                    <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                        <a href="index.html">
+                            <img src="images/logo.webp" alt="Click Media & Marketing Logo" class="h-16 w-auto transform group-hover:scale-105 transition-transform duration-500" />
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">HOME</a>
+                        <div class="relative group">
+                            <button class="flex items-center text-sm font-semibold hover:text-primary transition-colors group-hover:text-primary">
+                                SERVICES <span class="material-symbols-outlined text-sm ml-1">expand_more</span>
+                            </button>
+                            <div class="absolute left-0 mt-4 w-48 rounded-2xl shadow-2xl dropdown-glass opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-4 group-hover:translate-y-0 overflow-hidden">
+                                <div class="py-1" style="font-family: 'Poppins', sans-serif;">
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="web-design.html">Web Design</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="print-design.html">Print &amp; Design</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="photography-video.html">Photo &amp; Video</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="social-media.html">Social Media</a>
+                                    <a class="block px-4 py-3 text-sm hover:bg-white/10" href="seo.html">SEO Services</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="text-sm font-semibold text-primary transition-colors" href="education.html">EDUCATION</a>
+                        <a class="text-sm font-semibold hover:text-primary transition-colors" href="contact.html">CONTACT</a>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-full font-bold shadow-[0_0_20px_rgba(127,29,29,0.4)] text-sm" href="tel:+17162419856">Call Now!</a>
+                        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300"><span class="material-symbols-outlined">menu</span></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <button id="mobile-menu-close" class="absolute top-8 right-8 p-2 text-gray-400 hover:text-white transition-colors"><span class="material-symbols-outlined text-4xl">close</span></button>
+        <div class="flex flex-col items-center space-y-8">
+            <a class="text-xl font-bold text-white mobile-link" href="index.html">HOME</a>
+            <a class="text-xl font-bold text-white mobile-link" href="education.html">EDUCATION</a>
+            <a class="text-xl font-bold text-white mobile-link" href="contact.html">CONTACT</a>
+        </div>
+    </div>
+
+    <!-- Article Content Output -->
+    <main class="relative z-10 pt-24 lg:pt-32 pb-24 min-h-screen">
+        <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" id="article-load-container">
+            <div class="mb-10 lg:mb-16">
+                <a href="education.html" class="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-white transition-colors group tracking-widest uppercase">
+                    <span class="material-symbols-outlined text-lg transform group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to Education Home
+                </a>
+            </div>
+            <div class="text-center mb-12" id="article-header">
+                <p class="text-gray-400 text-lg">Loading article...</p>
+            </div>
+            <div class="prose-dark max-w-none text-lg" id="article-body">
+                <!-- Rich text injected here -->
+            </div>
+            
+            <div class="mt-16 pt-10 border-t border-white/10 hidden" id="author-box">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl">edit_document</span>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-lg">Written by <span id="author-name" class="text-primary">Admin</span></h4>
+                        <p class="text-gray-500 text-sm">Click Media & Marketing Team</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Previous/Next Article Navigation -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-16 pt-10 border-t border-white/10 hidden" id="article-nav">
+                <!-- Injected via JS -->
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black/80 backdrop-blur-2xl py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            © 2026 Click Media & Marketing.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const navContainer = document.getElementById('nav-container');
+        const navbar = document.getElementById('navbar');
+        const navInner = document.getElementById('nav-inner');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navContainer.classList.add('pt-6', 'px-4'); navbar.classList.remove('rounded-none'); navbar.classList.add('max-w-7xl', 'rounded-[2.5rem]', 'nav-scrolled'); navInner.classList.remove('h-20'); navInner.classList.add('h-16');
+            } else {
+                navContainer.classList.remove('pt-6', 'px-4'); navbar.classList.add('rounded-none'); navbar.classList.remove('max-w-7xl', 'rounded-[2.5rem]', 'nav-scrolled'); navInner.classList.add('h-20'); navInner.classList.remove('h-16');
+            }
+        });
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('opacity-0');
+            mobileMenu.classList.toggle('pointer-events-none');
+        }
+        if (mobileMenuBtn) mobileMenuBtn.onclick = toggleMobileMenu;
+        if (mobileMenuClose) mobileMenuClose.onclick = toggleMobileMenu;
+
+        // Fetch Article Logic
+        const SUPABASE_URL = 'https://pnuczigdeuxyextjlpva.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBudWN6aWdkZXV4eWV4dGpscHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MjU3NzksImV4cCI6MjA4OTUwMTc3OX0.JQ_r72q2v0J4JeWuhUN4W6ccadFdiOlvhcQzPeAx0L4';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function initArticle() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+            
+            if(!slug) {
+                document.getElementById('article-header').innerHTML = '<h1 class="text-4xl text-white font-bold">Article not found</h1>';
+                return;
+            }
+
+            const { data: art, error } = await supabaseClient
+                .from('articles')
+                .select('*')
+                .eq('slug', slug)
+                .single();
+
+            if (error || !art || art.status !== 'published') {
+                document.getElementById('article-header').innerHTML = '<h1 class="text-4xl text-white font-bold">Article not found or unpublished</h1>';
+                return;
+            }
+
+            // Populate metadata
+            document.title = (art.seo_title || art.title) + " | Click Media & Marketing";
+            document.getElementById('page-desc').content = art.seo_description || "";
+
+            // Populate content
+            const date = new Date(art.published_date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
+            
+            document.getElementById('article-header').innerHTML = `
+                <div class="flex items-center justify-center text-sm text-white font-bold tracking-widest uppercase mb-6">
+                    <span>${date}</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-8">
+                    ${art.title}
+                </h1>
+            `;
+            
+            document.getElementById('article-body').innerHTML = art.content;
+            
+            document.getElementById('author-box').classList.remove('hidden');
+            if(art.author) document.getElementById('author-name').textContent = art.author;
+
+            // Fetch Next/Prev Articles
+            const [{ data: prevArt }, { data: nextArt }] = await Promise.all([
+                supabaseClient.from('articles').select('title, slug').eq('status', 'published').lt('published_date', art.published_date).order('published_date', { ascending: false }).limit(1).maybeSingle(),
+                supabaseClient.from('articles').select('title, slug').eq('status', 'published').gt('published_date', art.published_date).order('published_date', { ascending: true }).limit(1).maybeSingle()
+            ]);
+
+            let navHtml = '';
+            if (prevArt) {
+                navHtml += `<a href="article.html?slug=${prevArt.slug}" class="group flex-1 w-full text-left bg-white/5 hover:bg-white/10 p-6 rounded-2xl transition-all border border-white/5 hover:border-white/10">
+                                <div class="text-xs text-gray-400 mb-2 uppercase tracking-widest flex items-center gap-2"><span class="material-symbols-outlined text-sm">arrow_back</span> Previous</div>
+                                <div class="text-white font-bold text-lg line-clamp-2 group-hover:text-primary transition-colors">${prevArt.title}</div>
+                            </a>`;
+            } else { navHtml += `<div class="flex-1 w-full"></div>`; }
+            
+            if (nextArt) {
+                navHtml += `<a href="article.html?slug=${nextArt.slug}" class="group flex-1 w-full text-right bg-white/5 hover:bg-white/10 p-6 rounded-2xl transition-all border border-white/5 hover:border-white/10">
+                                <div class="text-xs text-gray-400 mb-2 uppercase tracking-widest flex items-center justify-end gap-2">Next <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+                                <div class="text-white font-bold text-lg line-clamp-2 group-hover:text-primary transition-colors">${nextArt.title}</div>
+                            </a>`;
+            } else { navHtml += `<div class="flex-1 w-full"></div>`; }
+
+            if(prevArt || nextArt) {
+                document.getElementById('article-nav').innerHTML = navHtml;
+                document.getElementById('article-nav').classList.remove('hidden');
+            }
+
+            // Generate JSON-LD Schema
+            const schema = {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Article",
+                        "headline": art.seo_title || art.title,
+                        "description": art.seo_description || "",
+                        "author": { "@type": "Person", "name": art.author || "Click Media Team" },
+                        "datePublished": art.published_date,
+                        "dateModified": art.updated_at,
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Click Media & Marketing",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.clickmediaandmarketing.com/images/Small%20White%20Click%20Logo.webp"
+                            }
+                        }
+                    }
+                ]
+            };
+
+            // Add FAQ Schema if present
+            if(art.schema_faq && art.schema_faq.length > 0) {
+                schema['@graph'].push({
+                    "@type": "FAQPage",
+                    "mainEntity": art.schema_faq.map(f => ({
+                        "@type": "Question",
+                        "name": f.question,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": f.answer
+                        }
+                    }))
+                });
+            }
+
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.text = JSON.stringify(schema);
+            document.head.appendChild(script);
+        }
+
+        initArticle();
+    </script>
+</body>
+</html>

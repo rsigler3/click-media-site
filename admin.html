@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click Media CMS Admin</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <script>
+        window.addEventListener('error', function(e) {
+            document.body.innerHTML = `<div style="padding: 40px; color: white; text-align: center; font-family: sans-serif;"><h1 style="color: #ef4444; font-size: 2rem; margin-bottom: 1rem;">Setup Error</h1><p style="font-size: 1.2rem;">${e.message}</p><p style="color: #9ca3af; margin-top: 1rem;">This is usually caused by an adblocker or strict privacy settings blocking the required external scripts (Supabase, Tailwind, or Quill). Try disabling content blockers for localhost!</p></div>`;
+        });
+        tailwind.config = {
+            darkMode: "class",
+            theme: { extend: { colors: { primary: "#7f1d1d", "primary-hover": "#991b1b" } } }
+        };
+    </script>
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Quill Rich Text Editor -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <style>
+        body { background-color: #050507; color: #e5e7eb; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .ql-toolbar.ql-snow, .ql-container.ql-snow { border-color: rgba(255,255,255,0.2) !important; border-radius: 0.5rem; }
+        .ql-container.ql-snow { margin-top: 0.5rem; background: rgba(0,0,0,0.4); min-height: 200px; font-family: inherit; font-size: 1rem; color: #fff; }
+        .ql-toolbar.ql-snow { background: rgba(255,255,255,0.8); }
+    </style>
+</head>
+<body class="antialiased">
+
+<div id="login-view" class="h-screen flex items-center justify-center hidden">
+    <div class="glass p-10 rounded-2xl w-full max-w-md shadow-2xl">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">CMS Login</h1>
+            <p class="text-gray-400 text-sm">Sign in to manage your articles</p>
+        </div>
+        <form id="login-form" class="space-y-6">
+            <div>
+                <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Email</label>
+                <input type="email" id="email" required class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary" />
+            </div>
+            <div>
+                <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Password</label>
+                <input type="password" id="password" required class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary" />
+            </div>
+            <p id="login-error" class="text-red-500 text-sm hidden"></p>
+            <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-xl font-bold transition-colors">Sign In</button>
+        </form>
+    </div>
+</div>
+
+<div id="dashboard-view" class="hidden min-h-screen">
+    <!-- Navbar -->
+    <nav class="glass sticky top-0 z-50 px-6 py-4 flex justify-between items-center bg-black/80">
+        <div class="flex items-center space-x-2">
+            <span class="material-symbols-outlined text-primary">edit_document</span>
+            <span class="text-xl font-bold text-white tracking-widest">CMS DASHBOARD</span>
+        </div>
+        <button id="logout-btn" class="text-gray-400 hover:text-white transition flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">logout</span> Logout
+        </button>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-10 flex gap-8">
+        <!-- Sidebar -->
+        <div class="w-1/4 space-y-4">
+            <button id="btn-create" class="w-full text-left px-6 py-4 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold transition flex items-center gap-3">
+                <span class="material-symbols-outlined">add_circle</span> New Article
+            </button>
+            <div class="glass rounded-2xl p-4 space-y-2 max-h-[70vh] overflow-y-auto" id="article-list">
+                <!-- Articles injected here -->
+            </div>
+        </div>
+
+        <!-- Editor View -->
+        <div class="w-3/4 glass rounded-3xl p-8" id="editor-container" style="display: none;">
+            <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+                <h2 class="text-2xl font-bold text-white" id="editor-title">Edit Article</h2>
+                <div class="flex gap-3">
+                    <button id="btn-cancel" class="px-5 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 transition">Cancel</button>
+                    <button id="btn-save" class="px-5 py-2 rounded-xl bg-primary hover:bg-primary-hover font-bold transition flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">save</span> <span id="save-text">Save Draft</span>
+                    </button>
+                </div>
+            </div>
+
+            <form id="editor-form" class="space-y-6">
+                <!-- Hidden ID for updates -->
+                <input type="hidden" id="article-id" />
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Title</label>
+                        <input type="text" id="a-title" required class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary" />
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">URL Slug</label>
+                        <input type="text" id="a-slug" required class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary" placeholder="my-awesome-post" />
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Status</label>
+                        <select id="a-status" class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary">
+                            <option value="draft">Draft (Hidden)</option>
+                            <option value="published">Published (Live)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Author</label>
+                        <input type="text" id="a-author" class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary" />
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">SEO Title</label>
+                        <input type="text" id="a-seo-title" class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary" />
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">SEO Description</label>
+                        <input type="text" id="a-seo-desc" class="w-full bg-black/40 border-white/10 rounded-xl px-4 py-3 text-white focus:ring-primary focus:border-primary" />
+                    </div>
+                </div>
+
+                <!-- Rich Text Editor -->
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Content</label>
+                    <div id="quill-editor" class="bg-white/5 rounded-xl"></div>
+                </div>
+
+                <!-- FAQs for Schema -->
+                <div class="pt-6 border-t border-white/10">
+                    <div class="flex justify-between items-center mb-4">
+                        <label class="block text-xs uppercase tracking-wider text-gray-400">SEO FAQs (Schema Markup)</label>
+                        <button type="button" id="btn-add-faq" class="text-sm bg-white/10 hover:bg-white/20 px-3 py-1 rounded transition">+ Add FAQ</button>
+                    </div>
+                    <div id="faq-container" class="space-y-4">
+                        <!-- FAQs injected here -->
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Welcome Screen -->
+        <div class="w-3/4 glass rounded-3xl p-16 flex flex-col items-center justify-center text-center" id="welcome-container">
+            <span class="material-symbols-outlined text-6xl text-gray-600 mb-4 cursor-default">article</span>
+            <h2 class="text-2xl font-bold text-white mb-2">Select an Article</h2>
+            <p class="text-gray-400">Choose an article from the left to edit, or create a newly drafted one.</p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    let supabaseClient;
+    try {
+        if(!window.supabase) throw new Error("Supabase script blocked (check adblocker or connection)");
+        const SUPABASE_URL = 'https://pnuczigdeuxyextjlpva.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBudWN6aWdkZXV4eWV4dGpscHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MjU3NzksImV4cCI6MjA4OTUwMTc3OX0.JQ_r72q2v0J4JeWuhUN4W6ccadFdiOlvhcQzPeAx0L4';
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } catch(err) {
+        document.body.innerHTML = `<div class="p-10 text-center"><h1 class="text-3xl font-bold text-red-500 mb-4">Initialization Error</h1><p class="text-white">${err.message}</p><p class="text-gray-400 mt-4">Try refreshing or disabling any adblockers that might be blocking CDN scripts.</p></div>`;
+    }
+
+    // Quill Setup
+    const quill = new Quill('#quill-editor', {
+        theme: 'snow',
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                ['blockquote', 'code-block'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],
+                ['link', 'image', 'video'],
+                ['clean']
+            ]
+        }
+    });
+
+    // Elements
+    const loginView = document.getElementById('login-view');
+    const dashboardView = document.getElementById('dashboard-view');
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+    
+    // Auth Check
+    async function checkAuth() {
+        try {
+            if(!window.supabase) throw new Error("Supabase library failed to load");
+            
+            const { data, error } = await supabaseClient.auth.getSession();
+            if (error) console.error("Session warning:", error);
+
+            if (data && data.session) {
+                loginView.classList.add('hidden');
+                dashboardView.classList.remove('hidden');
+                loadArticles();
+            } else {
+                loginView.classList.remove('hidden');
+                dashboardView.classList.add('hidden');
+            }
+        } catch(err) {
+            console.error(err);
+            loginView.classList.remove('hidden');
+            loginError.textContent = "Initialization Error: " + err.message;
+            loginError.classList.remove('hidden');
+        }
+    }
+    
+    // Login Submission
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        
+        if (error) {
+            loginError.textContent = error.message;
+            loginError.classList.remove('hidden');
+        } else {
+            loginError.classList.add('hidden');
+            checkAuth();
+        }
+    });
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+        await supabaseClient.auth.signOut();
+        checkAuth();
+    });
+
+    // Load Articles 
+    async function loadArticles() {
+        const listDiv = document.getElementById('article-list');
+        listDiv.innerHTML = '<p class="text-sm text-gray-500">Loading...</p>';
+        
+        const { data: articles, error } = await supabaseClient
+            .from('articles')
+            .select('id, title, status, created_at')
+            .order('created_at', { ascending: false });
+            
+        if (error) {
+            listDiv.innerHTML = `<p class="text-red-500 text-sm">Error: ${error.message}</p>`;
+            return;
+        }
+        
+        listDiv.innerHTML = '';
+        if(articles.length === 0) {
+            listDiv.innerHTML = '<p class="text-sm text-gray-500">No articles found.</p>';
+            return;
+        }
+
+        articles.forEach(art => {
+            const btn = document.createElement('button');
+            btn.className = "w-full text-left p-4 rounded-xl hover:bg-white/10 transition border border-transparent hover:border-white/10 group relative";
+            const statusColor = art.status === 'published' ? 'text-green-400' : 'text-yellow-400';
+            btn.innerHTML = `
+                <div class="flex justify-between items-start mb-1">
+                    <span class="font-semibold text-white truncate max-w-[80%]">${art.title}</span>
+                    <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-black/50 ${statusColor}">${art.status}</span>
+                </div>
+                <div class="text-xs text-gray-500">${new Date(art.created_at).toLocaleDateString()}</div>
+                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition text-gray-400">arrow_forward_ios</span>
+            `;
+            btn.onclick = () => loadEditor(art.id);
+            listDiv.appendChild(btn);
+        });
+    }
+
+    // FAQ Management
+    let faqs = [];
+    function renderFaqs() {
+        const container = document.getElementById('faq-container');
+        container.innerHTML = '';
+        faqs.forEach((faq, index) => {
+            const row = document.createElement('div');
+            row.className = "flex gap-4 items-start bg-black/20 p-4 rounded-xl border border-white/5";
+            row.innerHTML = `
+                <div class="flex-1 space-y-3">
+                    <input type="text" placeholder="Question" class="faq-q w-full bg-black/40 border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:ring-primary focus:border-primary" value="${faq.question || ''}">
+                    <textarea placeholder="Answer" class="faq-a w-full bg-black/40 border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:ring-primary focus:border-primary resize-none" rows="2">${faq.answer || ''}</textarea>
+                </div>
+                <button type="button" class="text-red-500 hover:text-red-400 p-2 opacity-50 hover:opacity-100 transition" onclick="removeFaq(${index})">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+            `;
+            container.appendChild(row);
+        });
+    }
+    document.getElementById('btn-add-faq').onclick = () => { faqs.push({question: '', answer: ''}); renderFaqs(); };
+    window.removeFaq = (idx) => { faqs.splice(idx, 1); renderFaqs(); };
+
+    // Editor Logic
+    const editorContainer = document.getElementById('editor-container');
+    const welcomeContainer = document.getElementById('welcome-container');
+
+    document.getElementById('btn-create').onclick = () => {
+        welcomeContainer.style.display = 'none';
+        editorContainer.style.display = 'block';
+        document.getElementById('editor-form').reset();
+        document.getElementById('article-id').value = '';
+        document.getElementById('editor-title').textContent = 'New Article';
+        quill.root.innerHTML = '';
+        faqs = [];
+        renderFaqs();
+        document.getElementById('save-text').textContent = 'Create Article';
+    };
+
+    document.getElementById('btn-cancel').onclick = () => {
+        editorContainer.style.display = 'none';
+        welcomeContainer.style.display = 'flex';
+    };
+
+    async function loadEditor(id) {
+        welcomeContainer.style.display = 'none';
+        editorContainer.style.display = 'block';
+        document.getElementById('editor-title').textContent = 'Loading...';
+        
+        const { data, error } = await supabaseClient.from('articles').select('*').eq('id', id).single();
+        if (error) return alert("Error loading: " + error.message);
+        
+        document.getElementById('editor-title').textContent = 'Edit Article';
+        document.getElementById('save-text').textContent = 'Update Status';
+        document.getElementById('article-id').value = data.id;
+        document.getElementById('a-title').value = data.title || '';
+        document.getElementById('a-slug').value = data.slug || '';
+        document.getElementById('a-status').value = data.status || 'draft';
+        document.getElementById('a-author').value = data.author || '';
+        document.getElementById('a-seo-title').value = data.seo_title || '';
+        document.getElementById('a-seo-desc').value = data.seo_description || '';
+        quill.root.innerHTML = data.content || '';
+        
+        faqs = data.schema_faq || [];
+        renderFaqs();
+    }
+
+    // Save Article
+    document.getElementById('btn-save').onclick = async (e) => {
+        e.preventDefault();
+        
+        // gather faqs
+        const currFaqs = [];
+        const qs = document.querySelectorAll('.faq-q');
+        const as = document.querySelectorAll('.faq-a');
+        qs.forEach((q, i) => {
+            if(q.value.trim() && as[i].value.trim()) {
+                currFaqs.push({ question: q.value.trim(), answer: as[i].value.trim() });
+            }
+        });
+
+        const artId = document.getElementById('article-id').value;
+        const payload = {
+            title: document.getElementById('a-title').value,
+            slug: document.getElementById('a-slug').value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''),
+            status: document.getElementById('a-status').value,
+            author: document.getElementById('a-author').value,
+            seo_title: document.getElementById('a-seo-title').value,
+            seo_description: document.getElementById('a-seo-desc').value,
+            content: quill.root.innerHTML,
+            schema_faq: currFaqs
+        };
+
+        if(payload.status === 'published') payload.published_date = new Date().toISOString();
+
+        if (artId) {
+            // Update
+            payload.updated_at = new Date().toISOString();
+            const { error } = await supabaseClient.from('articles').update(payload).eq('id', artId);
+            if (error) alert("Update Error: " + error.message);
+            else { alert("Updated successfully!"); loadArticles(); }
+        } else {
+            // Insert
+            const { error } = await supabaseClient.from('articles').insert([payload]);
+            if (error) alert("Insert Error: " + error.message);
+            else { 
+                alert("Created successfully!"); 
+                loadArticles(); 
+                editorContainer.style.display = 'none';
+                welcomeContainer.style.display = 'flex';
+            }
+        }
+    };
+
+    // Auto-generate slug from title if slug is empty
+    document.getElementById('a-title').addEventListener('input', (e) => {
+        const slugEl = document.getElementById('a-slug');
+        if(!document.getElementById('article-id').value && (!slugEl.value || slugEl.dataset.auto === "true")) {
+            slugEl.value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            slugEl.dataset.auto = "true";
+        }
+    });
+    document.getElementById('a-slug').addEventListener('input', () => {
+        document.getElementById('a-slug').dataset.auto = "false";
+    });
+
+    // Run Auth check on start
+    checkAuth();
+</script>
+
+</body>
+</html>
