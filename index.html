@@ -665,21 +665,21 @@
                 </div>
             </div>
             
-            <div class="relative w-full group/carousel max-w-[100vw] overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-4">
-                <!-- Left/Right Fading Edges for the Scroll Container -->
-                <div class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#08080a] via-[#08080a] to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#08080a] via-[#08080a] to-transparent z-10 pointer-events-none"></div>
+            <div class="relative w-[calc(100vw-2rem)] md:w-full group/carousel max-w-7xl mx-auto overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[#030304]/80 shadow-[inset_0_0_80px_rgba(0,0,0,1)] border border-white/5 py-4 md:py-8 mt-8">
+                <!-- Left/Right Solid Tunnel Edges -->
+                <div class="absolute inset-y-0 left-0 w-16 md:w-56 bg-gradient-to-r from-[#030304] via-[#030304]/90 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute inset-y-0 right-0 w-16 md:w-56 bg-gradient-to-l from-[#030304] via-[#030304]/90 to-transparent z-10 pointer-events-none"></div>
 
                 <!-- Floating Arrows -->
-                <button id="btn-scroll-left" aria-label="Scroll left" class="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:bg-black/90 hover:border-white/50 transition-all text-white/50 hover:text-white shadow-2xl opacity-0 group-hover/carousel:opacity-100 transform -translate-x-4 group-hover/carousel:translate-x-0">
+                <button id="btn-scroll-left" aria-label="Scroll left" class="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 shadow-[0_0_20px_rgba(0,0,0,0.9)] backdrop-blur-md border border-white/20 hover:bg-primary hover:border-primary transition-all text-white hover:scale-110 active:scale-95 opacity-80 hover:opacity-100">
                     <span class="material-symbols-outlined text-2xl">arrow_back</span>
                 </button>
-                <button id="btn-scroll-right" aria-label="Scroll right" class="absolute top-1/2 right-4 md:right-8 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-white/20 hover:bg-black/90 hover:border-white/50 transition-all text-white/50 hover:text-white shadow-2xl opacity-0 group-hover/carousel:opacity-100 transform translate-x-4 group-hover/carousel:translate-x-0">
+                <button id="btn-scroll-right" aria-label="Scroll right" class="absolute top-1/2 right-4 md:right-8 -translate-y-1/2 z-30 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 shadow-[0_0_20px_rgba(0,0,0,0.9)] backdrop-blur-md border border-white/20 hover:bg-primary hover:border-primary transition-all text-white hover:scale-110 active:scale-95 opacity-80 hover:opacity-100">
                     <span class="material-symbols-outlined text-2xl">arrow_forward</span>
                 </button>
 
                 <!-- Carousel Container -->
-                <div id="latest-blog-container" class="flex overflow-x-auto gap-4 md:gap-8 pb-12 pt-8 snap-x snap-mandatory scroll-smooth px-8 md:px-[20vw]" style="scrollbar-width: none; -ms-overflow-style: none;">
+                <div id="latest-blog-container" class="flex overflow-x-auto gap-4 md:gap-8 pb-12 pt-16 px-8 md:px-[25vw]" style="scrollbar-width: none; -ms-overflow-style: none; perspective: 1800px; transform-style: preserve-3d; overflow-y: visible;">
                     <style>#latest-blog-container::-webkit-scrollbar { display: none; }</style>
                     <!-- Articles injected here via JS -->
                 </div>
@@ -929,12 +929,20 @@
             }
 
             container.innerHTML = '';
-            articles.forEach((art) => {
+            
+            // Duplicate the articles heavily to create an invisible infinite-wrap loop
+            let displayArticles = [...articles];
+            while (displayArticles.length > 0 && displayArticles.length < 18) {
+                displayArticles = [...displayArticles, ...articles];
+            }
+
+            displayArticles.forEach((art) => {
                 const date = new Date(art.published_date).toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'});
                 
                 // We use a wrapper for the 3D scroll effect so it doesn't fight Tailwind hover transitions
                 const cardWrapper = document.createElement('div');
-                cardWrapper.className = "3d-card-wrapper shrink-0 snap-center min-w-[280px] w-[80vw] sm:w-[320px] md:w-[380px] h-full transition-transform duration-100 ease-out will-change-transform transform-gpu";
+                cardWrapper.className = "3d-card-wrapper shrink-0 min-w-[280px] w-[80vw] sm:w-[320px] md:w-[380px] h-full cursor-grab active:cursor-grabbing";
+                cardWrapper.style.willChange = "transform, opacity";
                 
                 let imgHtml = '';
                 if (art.content) {
@@ -974,15 +982,85 @@
 
         // Desktop Carousel Controls & 3D Effect
         const scrollContainer = document.getElementById('latest-blog-container');
-        document.getElementById('btn-scroll-left')?.addEventListener('click', () => {
-            const cardWidth = scrollContainer.querySelector('.3d-card-wrapper')?.offsetWidth || 380;
-            // Scroll by full card width plus gap (gap is e.g. 2rem = 32px or 1rem = 16px, we'll guess 400 total)
-            scrollContainer.scrollBy({ left: -(cardWidth + 32), behavior: 'smooth' });
-        });
-        document.getElementById('btn-scroll-right')?.addEventListener('click', () => {
-            const cardWidth = scrollContainer.querySelector('.3d-card-wrapper')?.offsetWidth || 380;
-            scrollContainer.scrollBy({ left: (cardWidth + 32), behavior: 'smooth' });
-        });
+        const btnLeft = document.getElementById('btn-scroll-left');
+        const btnRight = document.getElementById('btn-scroll-right');
+        
+        let isAutoScrolling = true;
+        let autoScrollPauseTimeout;
+        let currentScrollAccumulator = scrollContainer.scrollLeft;
+
+        function pauseAutoScroll(ms) {
+            isAutoScrolling = false;
+            clearTimeout(autoScrollPauseTimeout);
+            autoScrollPauseTimeout = setTimeout(() => { 
+                isAutoScrolling = true; 
+                if (scrollContainer) currentScrollAccumulator = scrollContainer.scrollLeft;
+            }, ms);
+        }
+
+        // Custom Slow Ease for Arrow Navigation
+        function slowScrollBy(distance, durationMS) {
+            pauseAutoScroll(durationMS + 3000);
+            const startScroll = scrollContainer.scrollLeft;
+            const startTime = performance.now();
+            
+            function step(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / durationMS, 1);
+                
+                // Ease in out cubic
+                const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                
+                scrollContainer.scrollLeft = startScroll + (distance * ease);
+                
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    currentScrollAccumulator = scrollContainer.scrollLeft;
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        // Auto Scroll Loop (Slow, infinite continuous spin)
+        function continuousAutoScroll() {
+            if (isAutoScrolling && scrollContainer) {
+                // Adjust speed by incrementing fractionally
+                currentScrollAccumulator += 0.5; // Precision offset
+                scrollContainer.scrollLeft = Math.round(currentScrollAccumulator);
+                
+                // Infinite belt illusion
+                if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 50) {
+                    currentScrollAccumulator = (scrollContainer.scrollWidth / 3);
+                    scrollContainer.scrollLeft = Math.round(currentScrollAccumulator);
+                }
+            } else if (scrollContainer && !isAutoScrolling) {
+                // Keep sync while manual dragging happens
+                currentScrollAccumulator = scrollContainer.scrollLeft;
+            }
+            requestAnimationFrame(continuousAutoScroll);
+        }
+        
+        if (scrollContainer) {
+            // Start loop
+            requestAnimationFrame(continuousAutoScroll);
+            
+            // Pause on hover or touch
+            scrollContainer.addEventListener('mouseenter', () => pauseAutoScroll(5000));
+            scrollContainer.addEventListener('touchstart', () => pauseAutoScroll(5000), { passive: true });
+            
+            // Re-bind arrows using custom slow scroll physics
+            if (btnLeft) {
+                btnLeft.addEventListener('click', () => {
+                    slowScrollBy(-500, 1000); // Slower, wider movement
+                });
+            }
+            if (btnRight) {
+                btnRight.addEventListener('click', () => {
+                    slowScrollBy(500, 1000);
+                });
+            }
+        }
 
         // 3D Carousel Scroll Logic
         function apply3DCarouselEffect() {
@@ -997,23 +1075,27 @@
                 
                 const distance = cardCenter - containerCenter;
                 const absDistance = Math.abs(distance);
-                const maxDistance = scrollContainer.clientWidth;
+                const maxDistance = scrollContainer.clientWidth * 1.5; // Soften the effect progression
                 
                 // Map distance to a 0..1 ratio
-                let ratio = Math.min(absDistance / (maxDistance * 0.7), 1);
+                let ratio = Math.min(absDistance / maxDistance, 1);
                 
-                // Determine rotations & scales
-                // Peak scale is 1 when centered, drops to ~0.75 when far away
-                const scale = 1 - (ratio * 0.2); 
-                // Rotate based on distance: right items face left, left items face right
-                const rotateY = -(distance / maxDistance) * 45; // degrees
-                // Opacity fades as it goes away
-                let opacity = 1 - (ratio * 0.7);
-                // Lower z-index for cards further away
+                // True 3D depth geometry
+                const scale = 1 - (ratio * 0.45); // Shrinks to ~55% scale as they go behind
+                const rotateY = -(distance / scrollContainer.clientWidth) * 85; 
+                
+                // Extreme backwards push into unified Z-space
+                const translateZ = -ratio * 900; 
+                
+                // Tighter X-axis curve (cylindrical shape)
+                const translateX = (distance > 0 ? -1 : 1) * (ratio * 120); 
+
+                // Deep tunnel fade
+                let opacity = 1 - (ratio * 0.9);
                 const zIndex = Math.round(100 - (ratio * 100));
 
-                wrapper.style.transform = `perspective(1200px) rotateY(${rotateY}deg) scale(${scale})`;
-                wrapper.style.opacity = Math.max(0.1, opacity);
+                wrapper.style.transform = `perspective(2000px) translate3d(${translateX}px, 0, ${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+                wrapper.style.opacity = Math.max(0.02, opacity);
                 wrapper.style.zIndex = zIndex;
             });
         }
