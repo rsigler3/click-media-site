@@ -667,22 +667,22 @@
             
             <div class="relative w-[calc(100vw-2rem)] md:w-full group/carousel max-w-7xl mx-auto overflow-hidden py-4 md:py-8 mt-8 pb-12">
                 <!-- Left/Right Slot Openings -->
-                <div class="absolute top-12 md:top-16 bottom-[4.5rem] md:bottom-16 left-[2.8rem] md:left-[5.2rem] w-1.5 md:w-2 bg-[#000000] rounded-full z-[35] pointer-events-none shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]"></div>
-                <div class="absolute top-12 md:top-16 bottom-[4.5rem] md:bottom-16 right-[2.8rem] md:right-[5.2rem] w-1.5 md:w-2 bg-[#000000] rounded-full z-[35] pointer-events-none shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]"></div>
+                <div class="absolute top-12 md:top-16 bottom-[4.5rem] md:bottom-16 left-[1rem] md:left-[5.2rem] w-1.5 md:w-2 bg-[#000000] rounded-full z-[35] pointer-events-none shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]"></div>
+                <div class="absolute top-12 md:top-16 bottom-[4.5rem] md:bottom-16 right-[1rem] md:right-[5.2rem] w-1.5 md:w-2 bg-[#000000] rounded-full z-[35] pointer-events-none shadow-[inset_0_0_2px_rgba(255,255,255,0.1)]"></div>
 
-                <!-- Floating Arrows (Outside slots) -->
-                <button id="btn-scroll-left" aria-label="Scroll left" class="absolute top-1/2 left-0 md:left-4 -translate-y-1/2 z-[40] flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 shadow-[0_0_20px_rgba(0,0,0,0.9)] backdrop-blur-md border border-white/20 hover:bg-primary hover:border-primary transition-all text-white hover:scale-110 active:scale-95 opacity-80 hover:opacity-100">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_back</span>
+                <!-- Floating Arrows (Hidden on mobile) -->
+                <button id="btn-scroll-left" aria-label="Scroll left" class="absolute top-1/2 md:left-4 -translate-y-1/2 z-[40] hidden md:flex items-center justify-center md:w-12 md:h-12 rounded-full bg-white/10 shadow-[0_0_20px_rgba(0,0,0,0.9)] backdrop-blur-md border border-white/20 hover:bg-primary hover:border-primary transition-all text-white hover:scale-110 active:scale-95 opacity-80 hover:opacity-100">
+                    <span class="material-symbols-outlined md:text-2xl">arrow_back</span>
                 </button>
-                <button id="btn-scroll-right" aria-label="Scroll right" class="absolute top-1/2 right-0 md:right-4 -translate-y-1/2 z-[40] flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 shadow-[0_0_20px_rgba(0,0,0,0.9)] backdrop-blur-md border border-white/20 hover:bg-primary hover:border-primary transition-all text-white hover:scale-110 active:scale-95 opacity-80 hover:opacity-100">
-                    <span class="material-symbols-outlined text-xl md:text-2xl">arrow_forward</span>
+                <button id="btn-scroll-right" aria-label="Scroll right" class="absolute top-1/2 md:right-4 -translate-y-1/2 z-[40] hidden md:flex items-center justify-center md:w-12 md:h-12 rounded-full bg-white/10 shadow-[0_0_20px_rgba(0,0,0,0.9)] backdrop-blur-md border border-white/20 hover:bg-primary hover:border-primary transition-all text-white hover:scale-110 active:scale-95 opacity-80 hover:opacity-100">
+                    <span class="material-symbols-outlined md:text-2xl">arrow_forward</span>
                 </button>
 
                 <!-- Masked wrapper for fading effect -->
                 <style>
                     .carousel-mask {
-                        -webkit-mask-image: linear-gradient(to right, transparent 0, transparent 48px, black 72px, black calc(100% - 72px), transparent calc(100% - 48px), transparent 100%);
-                        mask-image: linear-gradient(to right, transparent 0, transparent 48px, black 72px, black calc(100% - 72px), transparent calc(100% - 48px), transparent 100%);
+                        -webkit-mask-image: linear-gradient(to right, transparent 0, transparent 16px, black 40px, black calc(100% - 40px), transparent calc(100% - 16px), transparent 100%);
+                        mask-image: linear-gradient(to right, transparent 0, transparent 16px, black 40px, black calc(100% - 40px), transparent calc(100% - 16px), transparent 100%);
                     }
                     @media (min-width: 768px) {
                         .carousel-mask {
