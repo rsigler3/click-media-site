@@ -178,6 +178,43 @@
             opacity: 1;
             transform: translateY(0) scale(1) rotateX(0deg);
         }
+        .reveal-drop {
+            opacity: 0;
+            transform: translateY(-40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-drop.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-drop-1 { transition-delay: 0.8s; }
+        .reveal-drop-2 { transition-delay: 0.9s; }
+        .reveal-drop-3 { transition-delay: 1.0s; }
+        
+        .connector-vertical {
+            transform-origin: top;
+            transform: scaleY(0);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+        .connector-vertical.active {
+            transform: scaleY(1);
+        }
+        .connector-horizontal {
+            transform-origin: center;
+            transform: scaleX(0);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+        }
+        .connector-horizontal.active {
+            transform: scaleX(1);
+        }
+        .connector-drop {
+            transform-origin: top;
+            transform: scaleY(0);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .connector-drop-1.active { transform: scaleY(1); transition-delay: 0.6s; }
+        .connector-drop-2.active { transform: scaleY(1); transition-delay: 0.7s; }
+        .connector-drop-3.active { transform: scaleY(1); transition-delay: 0.8s; }
         .reveal-left {
             opacity: 0;
             transform: translateX(-100px) scale(0.9) rotateY(-10deg);
@@ -408,7 +445,133 @@
         </div>
     </header>
     <main class="relative z-10">
-        <!-- Why Choose Click Media Section -->
+
+        <!-- New Services Section -->
+        <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 mb-12 relative z-10 font-poppins">
+            <!-- SECTION INTRO -->
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-primary font-black uppercase tracking-[0.3em] text-sm mb-4 block">Our Services</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">Turn your online presence into your best sales tool.</h2>
+                <p class="text-xl text-gray-400 font-light leading-relaxed">
+                    Your website is the center of your online brand. We design high-performing digital homes and support them with the visuals, branding, and content that help your business stand out and grow.
+                </p>
+            </div>
+
+            <!-- FEATURED CARD (FULL WIDTH) & SUPPORTING CARDS WRAPPER -->
+            <div class="w-full mb-24 z-10">
+                <!-- FEATURED CARD & LINES WRAPPER -->
+                <div class="relative w-full z-20">
+                    <!-- FEATURED CARD -->
+                    <div class="glass-panel group relative rounded-3xl overflow-hidden transition-all duration-500 hover:border-white/50 relative z-20">
+                <!-- Background Gradient Accents -->
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-50"></div>
+                
+                <div class="relative p-10 md:p-14 lg:p-16 flex flex-col lg:flex-row gap-10 lg:items-center justify-between">
+                    <div class="lg:w-2/3">
+                        <h3 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Web Design & Development</h3>
+                        <p class="text-lg md:text-xl text-gray-400 font-light leading-relaxed mb-8">
+                            Your website should be more than a placeholder. We design and develop mobile-friendly, conversion-focused websites that help your business look credible, communicate clearly, and turn visitors into customers.
+                        </p>
+                        <ul class="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-10">
+                            <li class="flex items-center text-gray-300">
+                                <span class="material-symbols-outlined text-primary mr-3 text-xl">check_circle</span>
+                                <span class="text-lg font-medium">SEO-conscious</span>
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <span class="material-symbols-outlined text-primary mr-3 text-xl">check_circle</span>
+                                <span class="text-lg font-medium">Mobile-first</span>
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <span class="material-symbols-outlined text-primary mr-3 text-xl">check_circle</span>
+                                <span class="text-lg font-medium">Built to convert</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="web-design.html" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_20px_rgba(127,29,29,0.3)]">
+                            Explore Web Design <span class="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Chains are added directly to the smaller cards below -->
+            </div>
+
+            <!-- SUPPORTING CARDS (3 CARDS IN A ROW) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 md:mt-12 relative z-10">
+                    
+                    <!-- Card 1 -->
+                    <div class="relative w-full h-full reveal-drop connector-drop-1">
+                        <!-- Top Vertical White Line -->
+                        <div class="hidden md:block absolute -top-[48px] left-1/2 -translate-x-1/2 w-1.5 h-[64px] bg-white z-0 pointer-events-none rounded-full blur-[0.5px]"></div>
+                        <!-- Bottom Vertical White Line -->
+                        <div class="hidden md:block absolute -bottom-[48px] left-1/2 -translate-x-1/2 w-1.5 h-[64px] bg-white z-0 pointer-events-none rounded-full blur-[0.5px]"></div>
+                        <div class="glass-panel group relative z-10 rounded-3xl p-8 flex flex-col h-full w-full transition-all duration-500 hover:border-white/30 hover:-translate-y-1 bg-[#3a1c1c]/95">
+                            <h4 class="text-2xl font-bold text-white mb-4 mt-2">Print & Graphic Design</h4>
+                            <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                                Extend your brand beyond the screen with polished visuals and marketing materials that keep your business consistent everywhere.
+                            </p>
+                            <a href="print-design.html" class="inline-flex items-center text-primary font-semibold hover:text-white transition-colors group-hover:translate-x-1 mt-auto w-fit">
+                                Explore Print Design <span class="material-symbols-outlined ml-1 text-xl">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                <!-- Card 2 -->
+                <div class="relative w-full h-full reveal-drop connector-drop-2">
+                    <!-- Top Vertical White Line -->
+                    <div class="hidden md:block absolute -top-[48px] left-1/2 -translate-x-1/2 w-1.5 h-[64px] bg-white z-0 pointer-events-none rounded-full blur-[0.5px]"></div>
+                    <!-- Bottom Vertical White Line -->
+                    <div class="hidden md:block absolute -bottom-[48px] left-1/2 -translate-x-1/2 w-1.5 h-[64px] bg-white z-0 pointer-events-none rounded-full blur-[0.5px]"></div>
+                    <div class="glass-panel group relative z-10 rounded-3xl p-8 flex flex-col h-full w-full transition-all duration-500 hover:border-white/30 hover:-translate-y-1 bg-[#3a1c1c]/95">
+                        <h4 class="text-2xl font-bold text-white mb-4 mt-2">Photography & Video</h4>
+                        <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                            Give your website and marketing professional visuals that build trust instantly.
+                        </p>
+                        <a href="photography-video.html" class="inline-flex items-center text-primary font-semibold hover:text-white transition-colors group-hover:translate-x-1 mt-auto w-fit">
+                            Explore Photo & Video <span class="material-symbols-outlined ml-1 text-xl">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="relative w-full h-full reveal-drop connector-drop-3">
+                    <!-- Top Vertical White Line -->
+                    <div class="hidden md:block absolute -top-[48px] left-1/2 -translate-x-1/2 w-1.5 h-[64px] bg-white z-0 pointer-events-none rounded-full blur-[0.5px]"></div>
+                    <!-- Bottom Vertical White Line -->
+                    <div class="hidden md:block absolute -bottom-[48px] left-1/2 -translate-x-1/2 w-1.5 h-[64px] bg-white z-0 pointer-events-none rounded-full blur-[0.5px]"></div>
+                    <div class="glass-panel group relative z-10 rounded-3xl p-8 flex flex-col h-full w-full transition-all duration-500 hover:border-white/30 hover:-translate-y-1 bg-[#3a1c1c]/95">
+                        <h4 class="text-2xl font-bold text-white mb-4 mt-2">Social Media Management</h4>
+                        <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
+                            Drive consistent traffic and attention back to your website with strategic social content.
+                        </p>
+                        <a href="social-media.html" class="inline-flex items-center text-primary font-semibold hover:text-white transition-colors group-hover:translate-x-1 mt-auto w-fit">
+                            Explore Social Media <span class="material-symbols-outlined ml-1 text-xl">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- END OF FEATURED CARD & SUPPORTING CARDS WRAPPER -->
+            </div>
+
+            <!-- BOTTOM CTA SECTION -->
+            <div class="text-center glass-panel rounded-3xl p-16 md:py-24 md:px-16 relative overflow-hidden mt-12 z-20 bg-[#2d1111]/95">
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <p class="text-3xl md:text-4xl font-extrabold text-white mb-8">Need a full creative marketing ecosystem?</p>
+                    <p class="text-xl text-gray-400 font-light mb-12">
+                        We’ll help you choose the right services to support your digital home.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-4">
+                        <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_20px_rgba(127,29,29,0.3)]">
+                            Book a Consultation <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Click Media Section (Moved) -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 mb-8 lg:mt-24 lg:mb-12">
             <div class="glass-panel rounded-3xl p-8 lg:p-12 relative overflow-hidden group">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 font-poppins">
@@ -470,219 +633,6 @@
             </div>
         </div>
 
-        <div class="w-full">
-            <div class="pinned-section" id="web-wrapper">
-                <section class="sticky-content" id="web">
-                    <div class="reveal-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                        <div class="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                            <div class="relative lg:order-1 stagger-left">
-                                <div
-                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
-                                    <img alt="Web Design and Development"
-                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                        src="../images/service-web.webp" />
-                                </div>
-
-                            </div>
-                            <div class="lg:order-2 lg:pl-12">
-                                <div class="flex items-center space-x-3 mb-6">
-                                    <span class="h-px w-12 bg-primary"></span>
-                                    <span
-                                        class="text-red-500 font-black uppercase tracking-[0.3em] text-sm sm:text-base md:text-lg">Web
-                                        Design
-                                        &amp; Development</span>
-                                </div>
-                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Build a
-                                    stunning online presence that converts.</h3>
-                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
-                                    Your website is your digital storefront. We create responsive, mobile-friendly
-                                    websites
-                                    that not only look beautiful but are optimized for speed, SEO, and user experience.
-                                </p>
-                                <ul class="space-y-4 mb-12">
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">SEO optimized</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Mobile first</span>
-                                    </li>
-                                </ul>
-                                <a class="group inline-flex items-center justify-center px-10 py-4 bg-white text-black font-bold rounded-2xl hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl"
-                                    href="web-design.html">
-                                    See Our Web Design Work
-                                    <span
-                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="pinned-section" id="print-wrapper">
-                <section class="sticky-content" id="print">
-                    <div class="reveal-right max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                        <div class="flex flex-col-reverse gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                            <div class="lg:pr-12">
-                                <div class="flex items-center space-x-3 mb-6">
-                                    <span class="h-px w-12 bg-primary"></span>
-                                    <span
-                                        class="text-red-500 font-black uppercase tracking-[0.3em] text-sm sm:text-base md:text-lg">Print
-                                        &amp;
-                                        Graphic Design</span>
-                                </div>
-                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Tangible
-                                    branding that leaves a mark.</h3>
-                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
-                                    From business cards to billboards, our print design services ensure your brand
-                                    consistency across all physical mediums. Visuals that communicate your message
-                                    instantly.
-                                </p>
-                                <ul class="space-y-4 mb-12">
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Brand Identity &amp; Logo Development</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">High-Impact Marketing Collateral</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Printed materials delivered to your
-                                            door</span>
-                                    </li>
-                                </ul>
-                                <a class="group inline-flex items-center justify-center px-10 py-4 border-2 border-white/20 text-white font-bold rounded-2xl hover:bg-primary hover:border-primary transition-all duration-300"
-                                    href="print-design.html">
-                                    View our print designs
-                                    <span
-                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                                </a>
-                            </div>
-                            <div class="relative stagger-right">
-                                <div
-                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
-                                    <img alt="Graphic Design Samples"
-                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                        src="../images/service-print.webp" />
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="pinned-section" id="photo-wrapper">
-                <section class="sticky-content" id="photo">
-                    <div class="reveal-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                        <div class="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                            <div class="relative lg:order-1 stagger-left">
-                                <div
-                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
-                                    <img alt="Professional Photography"
-                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                        src="../images/service-photo.webp" />
-                                </div>
-
-                            </div>
-                            <div class="lg:order-2 lg:pl-12">
-                                <div class="flex items-center space-x-3 mb-6">
-                                    <span class="h-px w-12 bg-primary"></span>
-                                    <span
-                                        class="text-red-500 font-black uppercase tracking-[0.3em] text-sm sm:text-base md:text-lg">Photography
-                                        &amp; Video</span>
-                                </div>
-                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Visual
-                                    storytelling that captivates.</h3>
-                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
-                                    High-quality imagery is crucial for trust. Professional commercial photography and
-                                    videography services to showcase your business in the best light.
-                                </p>
-                                <ul class="space-y-4 mb-12">
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Professional headshots in our studio or your
-                                            work location</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Product photography</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Short form video</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Long form video</span>
-                                    </li>
-                                </ul>
-                                <a class="group inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-primary-hover transition-all duration-300 shadow-[0_0_30px_rgba(127,29,29,0.3)]"
-                                    href="photography-video.html">
-                                    Explore Photo & Video
-                                    <span
-                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="pinned-section" id="social-wrapper">
-                <section class="sticky-content" id="social">
-                    <div class="reveal-right max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                        <div class="flex flex-col-reverse gap-12 lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                            <div class="lg:pr-12">
-                                <div class="flex items-center space-x-3 mb-6">
-                                    <span class="h-px w-12 bg-primary"></span>
-                                    <span
-                                        class="text-red-500 font-black uppercase tracking-[0.3em] text-sm sm:text-base md:text-lg">Social
-                                        Media
-                                        Management</span>
-                                </div>
-                                <h3 class="text-4xl md:text-5xl font-extrabold text-white mb-8 leading-tight">Engage
-                                    your
-                                    audience where they live.</h3>
-                                <p class="text-xl text-gray-400 mb-10 leading-relaxed font-light">
-                                    Don't just post—connect. Strategic social media campaigns that increase engagement,
-                                    build community, and drive traffic to your business.
-                                </p>
-                                <ul class="space-y-4 mb-12">
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">Posts that drive engagement</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="material-symbols-outlined text-primary mr-4">check_circle</span>
-                                        <span class="text-lg text-gray-300">REELS video production</span>
-                                    </li>
-                                </ul>
-                                <a class="group inline-flex items-center justify-center px-10 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300"
-                                    href="social-media.html">
-                                    See how we can help with Social Media
-                                    <span
-                                        class="material-symbols-outlined ml-3 transform group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                                </a>
-                            </div>
-                            <div class="relative stagger-right">
-                                <div
-                                    class="aspect-w-4 aspect-h-3 rounded-3xl overflow-hidden glass-panel group-hover:border-primary/50 transition-all duration-700">
-                                    <img alt="Social Media Strategy"
-                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                                        src="../images/service-social.webp" />
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
 
         <!-- Latest Education Articles Section -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 mb-16 relative z-10 w-full overflow-visible">
@@ -862,7 +812,7 @@
         });
 
         // Intersection Observer for Magic Reveals
-        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-drop, .connector-vertical, .connector-horizontal, .connector-drop-1, .connector-drop-2, .connector-drop-3');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
