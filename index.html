@@ -357,51 +357,58 @@
             </div>
         <!-- Website Design Intro Section -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 font-poppins relative z-20">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                
                 <!-- Left Side: Headline & Intro -->
-                <div class="text-left w-full max-w-2xl lg:max-w-none">
+                <div class="text-left w-full">
                     <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-8 leading-tight">
                         Website Design in Jamestown, NY That Brings You Customers
                     </h2>
-                    <div class="text-xl text-gray-400 font-light leading-relaxed space-y-4">
+                    <div class="text-xl text-gray-400 font-light leading-relaxed space-y-4 max-w-lg">
                         <p>Most small business websites look good — but don’t generate consistent leads.</p>
                         <p>If you’re not showing up in Google or getting inquiries, something isn’t working.</p>
                     </div>
                 </div>
 
-                <!-- Right Side: Bullets, Solution & CTA -->
-                <div class="glass-panel group rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl">
-                    <!-- Subtle background glow -->
-                    <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none transition-opacity duration-700 group-hover:bg-primary/20"></div>
+                <!-- Right Side: Problems, Solution & CTA -->
+                <div class="text-left w-full glass-panel rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-2xl">
                     
-                    <ul class="space-y-6 mb-10 relative z-10">
-                        <li class="flex items-start">
-                            <span class="material-symbols-outlined text-[#cf4242] mr-4 mt-0.5">error</span>
-                            <span class="text-lg text-gray-300 font-medium">Hard to find in search results</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="material-symbols-outlined text-[#cf4242] mr-4 mt-0.5">error</span>
-                            <span class="text-lg text-gray-300 font-medium">Not converting visitors into customers</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="material-symbols-outlined text-[#cf4242] mr-4 mt-0.5">error</span>
-                            <span class="text-lg text-gray-300 font-medium">No clear strategy behind the design</span>
-                        </li>
-                    </ul>
+                    <!-- What's Going Wrong -->
+                    <div class="mb-8">
+                        <span class="text-gray-500 font-bold uppercase tracking-[0.2em] text-xs mb-3 block">What’s going wrong</span>
+                        <ul class="space-y-3">
+                            <li class="flex items-start group">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gray-600 mr-4 mt-2 opacity-50 block flex-shrink-0 transition-colors group-hover:bg-[#cf4242]"></span>
+                                <span class="text-lg text-gray-300 font-light">Hard to find in search results</span>
+                            </li>
+                            <li class="flex items-start group">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gray-600 mr-4 mt-2 opacity-50 block flex-shrink-0 transition-colors group-hover:bg-[#cf4242]"></span>
+                                <span class="text-lg text-gray-300 font-light">Not converting visitors into customers</span>
+                            </li>
+                            <li class="flex items-start group">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gray-600 mr-4 mt-2 opacity-50 block flex-shrink-0 transition-colors group-hover:bg-[#cf4242]"></span>
+                                <span class="text-lg text-gray-300 font-light">No clear strategy behind the design</span>
+                            </li>
+                        </ul>
+                    </div>
 
-                    <!-- Solution Statement -->
-                    <div class="relative z-10 bg-white/5 border-l-4 border-primary rounded-r-2xl p-6 md:p-8 mb-10 backdrop-blur-sm shadow-inner transition-colors duration-500 hover:bg-white/10">
-                        <p class="text-xl text-white font-semibold leading-relaxed">
-                            We build fast, SEO-focused websites designed to rank, attract the right audience, and turn visitors into real customers.
-                        </p>
+                    <!-- How We Fix It -->
+                    <div class="mb-8">
+                        <span class="text-primary font-bold uppercase tracking-[0.2em] text-xs mb-3 block">How we fix it</span>
+                        <div class="pl-5 border-l-2 border-white/10">
+                            <p class="text-xl text-white font-medium leading-relaxed">
+                                We build fast, SEO-focused websites designed to rank, attract the right audience, and turn visitors into real customers.
+                            </p>
+                        </div>
                     </div>
                     
                     <!-- CTA -->
-                    <div class="relative z-10">
-                        <a href="web-design.html" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_20px_rgba(127,29,29,0.3)] w-full sm:w-auto">
-                            Explore Web Design <span class="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    <div class="mt-2 text-center sm:text-left">
+                        <a href="web-design.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_20px_rgba(127,29,29,0.3)] w-full sm:w-auto group">
+                            Explore Web Design <span class="material-symbols-outlined ml-2 text-xl transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
                     </div>
+                    
                 </div>
             </div>
         </section>
@@ -516,7 +523,10 @@
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="flex flex-col items-center lg:items-end gap-8">
+                        <div class="w-full max-w-[320px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-white/30 transition-all duration-500">
+                            <img src="images/portfolio-ballet.webp" alt="Web Design Example" class="w-full h-auto aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
                         <a href="web-design.html" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_20px_rgba(127,29,29,0.3)]">
                             Explore Web Design <span class="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </a>
@@ -540,8 +550,11 @@
                             <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
                                 Extend your brand beyond the screen with polished visuals and marketing materials that keep your business consistent everywhere.
                             </p>
-                            <a href="print-design.html" class="inline-flex items-center text-primary font-semibold hover:text-white transition-colors group-hover:translate-x-1 mt-auto w-fit">
-                                Explore Print Design <span class="material-symbols-outlined ml-1 text-xl">arrow_forward</span>
+                            <div class="mb-8 rounded-2xl overflow-hidden shadow-lg border border-white/10 group-hover:border-white/20 transition-all duration-500">
+                                <img src="images/printmedia/Psd 3.webp" alt="Print Design Example" class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110">
+                            </div>
+                            <a href="print-design.html" class="inline-flex items-center justify-center w-full px-6 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_15px_rgba(127,29,29,0.3)] mt-auto group">
+                                Explore Print Design <span class="material-symbols-outlined ml-2 text-xl transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
                             </a>
                         </div>
                     </div>
@@ -557,9 +570,12 @@
                         <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
                             Give your website and marketing professional visuals that build trust instantly.
                         </p>
-                        <a href="photography-video.html" class="inline-flex items-center text-primary font-semibold hover:text-white transition-colors group-hover:translate-x-1 mt-auto w-fit">
-                            Explore Photo & Video <span class="material-symbols-outlined ml-1 text-xl">arrow_forward</span>
-                        </a>
+                            <div class="mb-8 rounded-2xl overflow-hidden shadow-lg border border-white/10 group-hover:border-white/20 transition-all duration-500">
+                                <img src="images/photo/doctors.webp" alt="Photography Example" class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110">
+                            </div>
+                            <a href="photography-video.html" class="inline-flex items-center justify-center w-full px-6 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_15px_rgba(127,29,29,0.3)] mt-auto group">
+                                Explore Photo & Video <span class="material-symbols-outlined ml-2 text-xl transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
                     </div>
                 </div>
 
@@ -574,9 +590,12 @@
                         <p class="text-gray-400 font-light leading-relaxed mb-8 flex-grow">
                             Drive consistent traffic and attention back to your website with strategic social content.
                         </p>
-                        <a href="social-media.html" class="inline-flex items-center text-primary font-semibold hover:text-white transition-colors group-hover:translate-x-1 mt-auto w-fit">
-                            Explore Social Media <span class="material-symbols-outlined ml-1 text-xl">arrow_forward</span>
-                        </a>
+                            <div class="mb-8 rounded-2xl overflow-hidden shadow-lg border border-white/10 group-hover:border-white/20 transition-all duration-500">
+                                <img src="images/service-social.webp" alt="Social Media Example" class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110">
+                            </div>
+                            <a href="social-media.html" class="inline-flex items-center justify-center w-full px-6 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors shadow-[0_0_15px_rgba(127,29,29,0.3)] mt-auto group">
+                                Explore Social Media <span class="material-symbols-outlined ml-2 text-xl transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
                     </div>
                 </div>
 
