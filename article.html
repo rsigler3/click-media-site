@@ -16,7 +16,13 @@
                         "primary-hover": "#991b1b",
                         "background-dark": "#050507",
                         "surface-dark": "#0a0a0c",
-                        "text-dark": "#e5e7eb",
+                                                "text-dark": "#ffffff",
+                        gray: {
+                            300: "#f9fafb",
+                            400: "#f3f4f6",
+                            500: "#e5e7eb",
+                            600: "#d1d5db",
+                        },
                     },
                     fontFamily: {
                         display: ["Inter", "sans-serif"],
@@ -42,15 +48,15 @@
         .nav-scrolled { @apply bg-black/60 backdrop-blur-sm border border-white/20 shadow-2xl; }
         .dropdown-glass { background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); }
         /* Rich Text styling */
-        .prose-dark { color: #e5e7eb; }
+        .prose-dark { color: #ffffff; }
         .prose-dark h1, .prose-dark h2, .prose-dark h3 { color: #ffffff; font-weight: 800; margin-top: 2rem; margin-bottom: 1rem; }
-        .prose-dark p { margin-bottom: 1.5rem; line-height: 1.8; color: #9ca3af; }
+                .prose-dark p { margin-bottom: 1.5rem; line-height: 1.8; color: #f3f4f6; }
         .prose-dark a { color: #7f1d1d; text-decoration: underline; font-weight: 600; }
         .prose-dark a:hover { color: #991b1b; }
-        .prose-dark ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #9ca3af; }
-        .prose-dark ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #9ca3af; }
+                .prose-dark ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #f3f4f6; }
+        .prose-dark ol { list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #f3f4f6; }
         .prose-dark img { border-radius: 0.5rem; max-width: 100%; height: auto; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .prose-dark blockquote { border-left: 4px solid #7f1d1d; padding-left: 1rem; font-style: italic; color: #d1d5db; margin-bottom: 1.5rem; background: rgba(255,255,255,0.02); padding-top: 1rem; padding-bottom: 1rem; }
+                .prose-dark blockquote { border-left: 4px solid #7f1d1d; padding-left: 1rem; font-style: italic; color: #f9fafb; margin-bottom: 1.5rem; background: rgba(255,255,255,0.02); padding-top: 1rem; padding-bottom: 1rem; }
     </style>
 </head>
 

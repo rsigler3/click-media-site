@@ -12,7 +12,12 @@
         });
         tailwind.config = {
             darkMode: "class",
-            theme: { extend: { colors: { primary: "#7f1d1d", "primary-hover": "#991b1b" } } }
+                        theme: { extend: { colors: { primary: "#7f1d1d", "primary-hover": "#991b1b",
+                gray: {
+                    400: "#f3f4f6", // Very light grey
+                    500: "#e5e7eb", // Off-white
+                }
+            } } }
         };
     </script>
     <!-- Supabase JS -->
@@ -24,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     
     <style>
-        body { background-color: #050507; color: #e5e7eb; font-family: 'Inter', sans-serif; }
+        body { background-color: #050507; color: #ffffff; font-family: 'Inter', sans-serif; }
         .glass { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
         .ql-toolbar.ql-snow, .ql-container.ql-snow { border-color: rgba(255,255,255,0.2) !important; border-radius: 0.5rem; }
         .ql-container.ql-snow { margin-top: 0.5rem; background: rgba(0,0,0,0.4); min-height: 200px; font-family: inherit; font-size: 1rem; color: #fff; }
