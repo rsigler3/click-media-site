@@ -106,184 +106,21 @@
     <meta name="description"
         content="Custom web design in Jamestown, NY for small businesses. Click Media & Marketing builds fast, SEO-friendly websites that help you get more calls, clicks, and customers." />
     <title>Web Design Jamestown NY | Click Media & Marketing</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#7f1d1d",
-                        "primary-hover": "#991b1b",
-                        "background-dark": "#050507",
-                        "surface-dark": "#0a0a0c",
-                                                "text-dark": "#ffffff",
-                        gray: {
-                            300: "#f9fafb",
-                            400: "#f3f4f6",
-                            500: "#e5e7eb",
-                            600: "#d1d5db",
-                        }
-                    },
-                    fontFamily: {
-                        display: ["Inter", "sans-serif"],
-                        body: ["Inter", "sans-serif"],
-                        poppins: ["Poppins", "sans-serif"],
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.5rem",
-                    },
-                },
-            },
-        };
-    </script>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" /></noscript>
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <style type="text/tailwindcss">
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #08080a;
-            overflow-x: hidden;
-        }
-        p {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .service-card {
-            @apply relative z-10 transition-all duration-500;
-        }
-        .stagger-left {
-            @apply lg:-ml-12 lg:mt-12;
-        }
-        .stagger-right {
-            @apply lg:-mr-12 lg:-mt-12;
-        }
-        .glass-panel {
-            @apply bg-white/10 backdrop-blur-2xl border border-white/20;
-            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-        }
-        .dropdown-glass {
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .nav-glass {
-            @apply bg-black/40 backdrop-blur-[2px] border-b border-white/10;
-        }
-        .nav-scrolled {
-            @apply bg-black/60 backdrop-blur-sm border border-white/20 shadow-2xl;
-        }
-        /* Fade overlay & zoom out */
-        .pinned-section {
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        @media (min-width: 1024px) {
-            .pinned-section {
-                padding: 4rem 0;
-            }
-        }
-        .sticky-content {
-            display: flex;
-            align-items: center;
-            background-color: transparent;
-            transform-origin: center top;
-            will-change: transform, opacity;
-            /* Disable CSS transitions here so our JavaScript scroll loop doesn't fight it */
-            transition: none !important;
-            /* Hardware acceleration */
-            backface-visibility: hidden;
-            transform: translateZ(0);
-        }
-        /* Scroll reveal magic */
-        .reveal {
-            opacity: 0;
-            transform: translateY(80px) scale(0.9) rotateX(-10deg);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0) scale(1) rotateX(0deg);
-        }
-        .reveal-drop {
-            opacity: 0;
-            transform: translateY(-40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-drop.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-drop-1 { transition-delay: 0.8s; }
-        .reveal-drop-2 { transition-delay: 0.9s; }
-        .reveal-drop-3 { transition-delay: 1.0s; }
-        
-        .connector-vertical {
-            transform-origin: top;
-            transform: scaleY(0);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-        }
-        .connector-vertical.active {
-            transform: scaleY(1);
-        }
-        .connector-horizontal {
-            transform-origin: center;
-            transform: scaleX(0);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
-        }
-        .connector-horizontal.active {
-            transform: scaleX(1);
-        }
-        .connector-drop {
-            transform-origin: top;
-            transform: scaleY(0);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .connector-drop-1.active { transform: scaleY(1); transition-delay: 0.6s; }
-        .connector-drop-2.active { transform: scaleY(1); transition-delay: 0.7s; }
-        .connector-drop-3.active { transform: scaleY(1); transition-delay: 0.8s; }
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-100px) scale(0.9) rotateY(-10deg);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
-        }
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0) scale(1) rotateY(0deg);
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(100px) scale(0.9) rotateY(10deg);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
-        }
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0) scale(1) rotateY(0deg);
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-            animation: scroll 40s linear infinite;
-        }
-        .animate-scroll:hover {
-            animation-play-state: paused;
-        }
-    </style>
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" /></noscript>
+        <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="text-text-dark selection:bg-primary selection:text-white relative">
@@ -395,6 +232,9 @@
             <div class="relative w-full max-w-6xl mx-auto flex justify-center drop-shadow-2xl mb-8 lg:mb-10">
                 <img alt="Our Work on Various Screens"
                     class="w-full max-w-5xl h-auto max-h-[40vh] sm:max-h-[45vh] lg:max-h-[50vh] object-contain transition-transform duration-700 hover:-translate-y-2 hover:scale-[1.02]"
+                    srcset="images/hero-mobile.webp 800w, images/hero.webp 1600w"
+                    sizes="(max-width: 768px) 100vw, 1600px"
+                    fetchpriority="high"
                     src="images/hero.webp"  width="1600" height="953" />
             </div>
             <!-- Website Design Intro Section -->
