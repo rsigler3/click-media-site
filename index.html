@@ -923,22 +923,22 @@
             });
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" async></script>
     <script>
-        const SUPABASE_URL = 'https://pnuczigdeuxyextjlpva.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBudWN6aWdkZXV4eWV4dGpscHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MjU3NzksImV4cCI6MjA4OTUwMTc3OX0.JQ_r72q2v0J4JeWuhUN4W6ccadFdiOlvhcQzPeAx0L4';
-        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
         async function fetchLatestBlogs() {
             const container = document.getElementById('latest-blog-container');
             if (!container) return;
 
-            // Fetch all articles
-            const { data: articles, error } = await supabaseClient
-                .from('articles')
-                .select('title, slug, seo_description, published_date, content')
-                .eq('status', 'published')
-                .order('published_date', { ascending: false });
+            // Fetch all articles from local JSON instead of Supabase
+            let articles = [];
+            let error = null;
+            try {
+                const res = await fetch('articles.json');
+                if (!res.ok) throw new Error("Failed to fetch");
+                articles = await res.json();
+                articles = articles.filter(a => a.status === 'published');
+            } catch (err) {
+                error = err;
+            }
 
             if (error) {
                 container.innerHTML = `<p class="text-red-500 col-span-full w-full text-center">Failed to load articles.</p>`;

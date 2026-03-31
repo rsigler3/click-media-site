@@ -116,7 +116,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         const navContainer = document.getElementById('nav-container');
         const navbar = document.getElementById('navbar');
@@ -139,10 +138,6 @@
         if (mobileMenuClose) mobileMenuClose.onclick = toggleMobileMenu;
 
         // Fetch Article Logic
-        const SUPABASE_URL = 'https://pnuczigdeuxyextjlpva.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBudWN6aWdkZXV4eWV4dGpscHZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MjU3NzksImV4cCI6MjA4OTUwMTc3OX0.JQ_r72q2v0J4JeWuhUN4W6ccadFdiOlvhcQzPeAx0L4';
-        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
         async function initArticle() {
             const urlParams = new URLSearchParams(window.location.search);
             const slug = urlParams.get('slug');
@@ -151,14 +146,23 @@
                 document.getElementById('article-header').innerHTML = '<h1 class="text-4xl text-white font-bold">Article not found</h1>';
                 return;
             }
+            
+            let articles = [];
+            try {
+                const res = await fetch('articles.json');
+                if (!res.ok) throw new Error("Failed to load");
+                articles = await res.json();
+            } catch(e) {
+                document.getElementById('article-header').innerHTML = '<h1 class="text-4xl text-white font-bold">Error loading articles</h1>';
+                return;
+            }
 
-            const { data: art, error } = await supabaseClient
-                .from('articles')
-                .select('*')
-                .eq('slug', slug)
-                .single();
+            const pubArticles = articles.filter(a => a.status === 'published')
+                .sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
+            const artIndex = pubArticles.findIndex(a => a.slug === slug);
+            const art = artIndex !== -1 ? pubArticles[artIndex] : null;
 
-            if (error || !art || art.status !== 'published') {
+            if (!art) {
                 document.getElementById('article-header').innerHTML = '<h1 class="text-4xl text-white font-bold">Article not found or unpublished</h1>';
                 return;
             }
@@ -184,11 +188,9 @@
             document.getElementById('author-box').classList.remove('hidden');
             if(art.author) document.getElementById('author-name').textContent = art.author;
 
-            // Fetch Next/Prev Articles
-            const [{ data: prevArt }, { data: nextArt }] = await Promise.all([
-                supabaseClient.from('articles').select('title, slug').eq('status', 'published').lt('published_date', art.published_date).order('published_date', { ascending: false }).limit(1).maybeSingle(),
-                supabaseClient.from('articles').select('title, slug').eq('status', 'published').gt('published_date', art.published_date).order('published_date', { ascending: true }).limit(1).maybeSingle()
-            ]);
+            // Calculate Next/Prev Articles
+            const nextArt = artIndex > 0 ? pubArticles[artIndex - 1] : null; // newer
+            const prevArt = artIndex < pubArticles.length - 1 ? pubArticles[artIndex + 1] : null; // older
 
             let navHtml = '';
             if (prevArt) {
