@@ -345,6 +345,36 @@
         renderFaqs();
     }
 
+    async function triggerJsonSync() {
+        try {
+            console.log("Syncing articles to Supabase Storage...");
+            const { data: articles, error: fetchErr } = await supabaseClient
+                .from('articles')
+                .select('*')
+                .eq('status', 'published')
+                .order('published_date', { ascending: false });
+            
+            if (fetchErr) throw fetchErr;
+
+            const blob = new Blob([JSON.stringify(articles)], { type: 'application/json' });
+            
+            const { error: uploadErr } = await supabaseClient
+                .storage
+                .from('blog-images')
+                .upload('articles.json', blob, {
+                    cacheControl: '10',  
+                    upsert: true
+                });
+            
+            if (uploadErr) throw uploadErr;
+            console.log("Successfully synced articles.json!");
+            return true;
+        } catch (err) {
+            console.error("Failed to generate and upload JSON cache:", err);
+            return false;
+        }
+    }
+
     // Save Article
     document.getElementById('btn-save').onclick = async (e) => {
         e.preventDefault();
@@ -360,6 +390,7 @@
                 if (error) {
                     alert("Delete Error: " + error.message);
                 } else {
+                    await triggerJsonSync();
                     loadArticles();
                     editorContainer.style.display = 'none';
                     welcomeContainer.style.display = 'flex';
@@ -396,12 +427,17 @@
             payload.updated_at = new Date().toISOString();
             const { error } = await supabaseClient.from('articles').update(payload).eq('id', artId);
             if (error) alert("Update Error: " + error.message);
-            else { alert("Updated successfully!"); loadArticles(); }
+            else { 
+                await triggerJsonSync();
+                alert("Updated successfully!"); 
+                loadArticles(); 
+            }
         } else {
             // Insert
             const { error } = await supabaseClient.from('articles').insert([payload]);
             if (error) alert("Insert Error: " + error.message);
             else { 
+                await triggerJsonSync();
                 alert("Created successfully!"); 
                 loadArticles(); 
                 editorContainer.style.display = 'none';

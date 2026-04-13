@@ -149,7 +149,7 @@
             
             let articles = [];
             try {
-                const res = await fetch('articles.json');
+                const res = await fetch('https://pnuczigdeuxyextjlpva.supabase.co/storage/v1/object/public/blog-images/articles.json');
                 if (!res.ok) throw new Error("Failed to load");
                 articles = await res.json();
             } catch(e) {
