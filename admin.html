@@ -346,9 +346,9 @@
     }
 
     // Helper to shrink large base64 images down to a small thumbnail
-    async function getCompressedThumbnail(src, maxDim = 400) {
+    async function getCompressedThumbnail(src, maxDim = 250) {
         if (!src.startsWith('data:image/')) return src; // External links are fine as is
-        if (src.length < 50000) return src; // Already small enough (approx under 35kb)
+        if (src.length < 20000) return src; // Already small enough
         
         return new Promise((resolve) => {
             const img = new Image();
@@ -370,7 +370,7 @@
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
                 
-                resolve(canvas.toDataURL('image/webp', 0.7)); // Compress to tiny webp
+                resolve(canvas.toDataURL('image/webp', 0.5)); // High compression
             };
             img.onerror = () => resolve(src); // Fallback to original if load fails
             img.src = src;
@@ -391,17 +391,22 @@
             // 1. Full JSON (for individual articles)
             const fullBlob = new Blob([JSON.stringify(articles)], { type: 'application/json' });
             
-            // 2. List JSON (for index/list pages - tiny and fast)
+            // 2. List JSON (Strictly cherry-picked fields for max speed)
             const listOnly = await Promise.all(articles.map(async a => {
-                const { content, ...meta } = a;
-                // Extract and compress first image URL for preview if exists
-                if (content) {
-                    const match = content.match(/<img[^>]+src="([^">]+)"/i);
+                let preview = null;
+                if (a.content) {
+                    const match = a.content.match(/<img[^>]+src="([^">]+)"/i);
                     if (match && match[1]) {
-                        meta.preview_image_url = await getCompressedThumbnail(match[1]);
+                        preview = await getCompressedThumbnail(match[1]);
                     }
                 }
-                return meta;
+                return {
+                    title: a.title,
+                    slug: a.slug,
+                    published_date: a.published_date,
+                    seo_description: a.seo_description,
+                    preview_image_url: preview
+                };
             }));
             const listBlob = new Blob([JSON.stringify(listOnly)], { type: 'application/json' });
             
