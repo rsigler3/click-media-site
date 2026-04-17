@@ -395,7 +395,13 @@
             return true;
         } catch (err) {
             console.error("Failed to generate and upload JSON cache:", err);
-            alert("Sync Error: " + err.message);
+            
+            if (err && err.message && err.message.includes('row-level security policy')) {
+                alert(`Sync Error: You are missing the UPDATE policy on Supabase Storage!\n\nTo fix this, go to your Supabase SQL Editor and run:\n\ncreate policy "Admin Auth Update Images" on storage.objects for update to authenticated using ( bucket_id = 'blog-images' );`);
+            } else {
+                alert("Sync Error: " + err.message);
+            }
+            
             return false;
         }
     }

@@ -53,3 +53,9 @@ DROP POLICY IF EXISTS "Admin Auth Insert Images" ON storage.objects;
 
 create policy "Public Access to Images" on storage.objects for select to public using ( bucket_id = 'blog-images' );
 create policy "Admin Auth Insert Images" on storage.objects for insert to authenticated with check ( bucket_id = 'blog-images' );
+
+-- NOTE: You MUST have UPDATE and DELETE policies enabled to overwrite/sync articles.json successfully.
+-- If you are getting a "Sync Error: new row violates row-level security policy", run the following two commands:
+create policy "Admin Auth Update Images" on storage.objects for update to authenticated using ( bucket_id = 'blog-images' );
+create policy "Admin Auth Delete Images" on storage.objects for delete to authenticated using ( bucket_id = 'blog-images' );
+
