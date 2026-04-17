@@ -356,21 +356,41 @@
             
             if (fetchErr) throw fetchErr;
 
-            const blob = new Blob([JSON.stringify(articles)], { type: 'application/json' });
+            // 1. Full JSON (for individual articles)
+            const fullBlob = new Blob([JSON.stringify(articles)], { type: 'application/json' });
             
+            // 2. List JSON (for index/list pages - tiny and fast)
+            const listOnly = articles.map(a => {
+                const { content, ...meta } = a;
+                return meta;
+            });
+            const listBlob = new Blob([JSON.stringify(listOnly)], { type: 'application/json' });
+            
+            // Upload Full
             const { error: uploadErr } = await supabaseClient
                 .storage
                 .from('blog-images')
-                .upload('articles.json', blob, {
+                .upload('articles.json', fullBlob, {
                     cacheControl: '10',  
                     upsert: true
                 });
-            
             if (uploadErr) throw uploadErr;
-            console.log("Successfully synced articles.json!");
+
+            // Upload List
+            const { error: uploadListErr } = await supabaseClient
+                .storage
+                .from('blog-images')
+                .upload('articles_list.json', listBlob, {
+                    cacheControl: '10',  
+                    upsert: true
+                });
+            if (uploadListErr) throw uploadListErr;
+
+            console.log("Successfully synced articles.json and articles_list.json!");
             return true;
         } catch (err) {
             console.error("Failed to generate and upload JSON cache:", err);
+            alert("Sync Error: " + err.message);
             return false;
         }
     }

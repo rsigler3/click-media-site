@@ -932,7 +932,7 @@
             let articles = [];
             let error = null;
             try {
-                const res = await fetch('articles.json');
+                const res = await fetch('articles_list.json');
                 if (!res.ok) throw new Error("Failed to fetch");
                 articles = await res.json();
                 articles = articles.filter(a => a.status === 'published');
