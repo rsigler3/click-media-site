@@ -967,15 +967,12 @@
                 cardWrapper.style.willChange = "transform, opacity";
 
                 let imgHtml = '';
-                if (art.content) {
-                    const match = art.content.match(/<img[^>]+src="([^">]+)"/i);
-                    if (match && match[1]) {
-                        imgHtml = `
-                            <div class="w-full h-40 md:h-48 mb-6 rounded-2xl overflow-hidden bg-black/50 flex-shrink-0 shadow-inner">
-                                <img src="${match[1]}" alt="Preview for ${art.title.replace(/"/g, '&quot;')}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out" />
-                            </div>
-                        `;
-                    }
+                if (art.preview_image_url) {
+                    imgHtml = `
+                        <div class="w-full h-40 md:h-48 mb-6 rounded-2xl overflow-hidden bg-black/50 flex-shrink-0 shadow-inner">
+                            <img src="${art.preview_image_url}" alt="Preview for ${art.title.replace(/"/g, '&quot;')}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out" />
+                        </div>
+                    `;
                 }
 
                 cardWrapper.innerHTML = `

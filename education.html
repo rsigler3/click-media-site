@@ -339,15 +339,12 @@
                 card.className = "glass-panel p-8 rounded-3xl flex flex-col justify-between hover:bg-white/20 transition-all group block shadow-2xl h-full";
                 
                 let imgHtml = '';
-                if (art.content) {
-                    const match = art.content.match(/<img[^>]+src="([^">]+)"/i);
-                    if (match && match[1]) {
-                        imgHtml = `
-                            <div class="w-full h-48 mb-6 rounded-xl overflow-hidden bg-black/50 flex-shrink-0">
-                                <img src="${match[1]}" alt="Preview for ${art.title.replace(/"/g, '&quot;')}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
-                            </div>
-                        `;
-                    }
+                if (art.preview_image_url) {
+                    imgHtml = `
+                        <div class="w-full h-48 mb-6 rounded-xl overflow-hidden bg-black/50 flex-shrink-0">
+                            <img src="${art.preview_image_url}" alt="Preview for ${art.title.replace(/"/g, '&quot;')}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                        </div>
+                    `;
                 }
 
                 card.innerHTML = `

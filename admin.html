@@ -362,6 +362,11 @@
             // 2. List JSON (for index/list pages - tiny and fast)
             const listOnly = articles.map(a => {
                 const { content, ...meta } = a;
+                // Extract first image URL for preview if exists
+                if (content) {
+                    const match = content.match(/<img[^>]+src="([^">]+)"/i);
+                    if (match && match[1]) meta.preview_image_url = match[1];
+                }
                 return meta;
             });
             const listBlob = new Blob([JSON.stringify(listOnly)], { type: 'application/json' });
